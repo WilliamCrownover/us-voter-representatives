@@ -1,0 +1,4 @@
+# exclude todo from being pushed to the repo
+todo.*
+# exclude local folder to being pushed to the repo
+local/
