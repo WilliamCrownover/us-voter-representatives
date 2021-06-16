@@ -40,15 +40,59 @@
                     return "Third-party or Independent"
                 }
             }
+        },
+        financeCard: {
+            totalRaised: "",
+            independentContributions: "",
+            nonIndependentContributions: function() {
+                return (this.totalRaised - this.independentContributions).toFixed(2);
+            },
+            grassRootsPercent: function() {
+                return ((this.independentContributions / this.totalRaised) * 100).toFixed(2);
+            },
+            expenditure: "",
+            currentStash: "",
+            netGainLoss: function() {
+                return (this.totalRaised - this.expenditure).toFixed(2);
+            }
         }
     }
 
 // -----Temporary Variables-----
-    var district = 01;
+    var district = 04;
     var state = "WA"
 
 // ----------------------------------------------------------------
 // FUNCTIONS
+
+function fetchCandidateTotalsOF() {
+    var locQueryUrl = `${urlOF}/candidate/${Candidate.idOF}/totals/?
+        sort_nulls_last=false&
+        sort_hide_null=false&
+        page=1&
+        sort_null_only=false&
+        api_key=${keyOpenFEC}&
+        cycle=2020`
+        .replace(/\s/g, '');
+
+    fetch(locQueryUrl)
+        .then(function (response) {
+            if(!response.ok) {
+                throw response.json();
+            }
+            return response.json();
+        })
+        .then(function (locRes) {
+            console.log("openFEC Candidate Totals", locRes);
+            Candidate.financeCard.totalRaised = locRes.results[0].contributions;
+            Candidate.financeCard.expenditure = locRes.results[0].disbursements;
+            Candidate.financeCard.independentContributions = locRes.results[0].individual_contributions;
+            Candidate.financeCard.currentStash = locRes.results[0].last_cash_on_hand_end_period;
+        })
+        .catch(function (error) {
+            return error;
+        });
+}
 
 function fetchCandidateOF() {
     var locQueryUrl = `${urlOF}/candidates/search/?
@@ -79,6 +123,7 @@ function fetchCandidateOF() {
             Candidate.infoCard.district = locRes.results[0].district_number;
             Candidate.infoCard.partyShort = locRes.results[0].party;
             Candidate.infoCard.state = locRes.results[0].state;
+            fetchCandidateTotalsOF();
         })
         .catch(function (error) {
             return error;
@@ -117,8 +162,11 @@ fetchCandidatePP();
 // Using this to check the API responses and see that the Candidate object functions correctly
 var display = setTimeout(function() {
     console.log("The Candidate", Candidate);
-    console.log("The Candidate", Candidate.photo());
-    console.log("The Candidate", Candidate.infoCard.fullName());
-    console.log("The Candidate", Candidate.infoCard.seat());
-    console.log("The Candidate", Candidate.infoCard.party());
+    console.log("The Candidate Photo:", Candidate.photo());
+    console.log("The Candidate Full Name:", Candidate.infoCard.fullName());
+    console.log("The Candidate Seat:", Candidate.infoCard.seat());
+    console.log("The Candidate Party:", Candidate.infoCard.party());
+    console.log("The Candidate Commitee Contributions:", Candidate.financeCard.nonIndependentContributions());
+    console.log("The Candidate Grassroots Percentage:", Candidate.financeCard.grassRootsPercent());
+    console.log("The Candidate Net Gain or Loss to Stash:", Candidate.financeCard.netGainLoss());
 }, 2000);
