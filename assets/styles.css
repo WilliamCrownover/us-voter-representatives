@@ -1,0 +1,113 @@
+.grid{
+    width: 100vw;
+    height: 100vh;
+
+    display: grid;
+    grid-template: 200px 1fr 1fr 250px / 1fr 1fr 1fr;
+    
+}
+
+header{
+    background-color: #223E88;
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+.logo{
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+img{
+    max-width: 100px;
+ }
+
+h1{
+    text-align: center;
+    color: goldenrod;
+    font-family: serif;
+}
+
+main{
+    background-color: #D8D8D8;
+    grid-row-start: 2;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+footer{
+    grid-row-start: 4;
+    grid-column-start:1;
+    grid-column-end: 4;
+}
+
+
+nav{
+    grid-row-start:2;
+    grid-column-start: 1;
+    margin:7.5px 0px 15px;
+  
+}
+
+.nav-wrapper{
+    margin: 5px 5px;
+    border: solid black 1px;
+    
+}
+
+body{
+    background-color: #D8D8D8;
+}
+
+form, .page-footer.page-footer{
+    background-color: #800507;
+}
+
+.card.card{
+border: solid black 1px;
+width: 200%;
+padding:15px;
+/*margin:  5px 5px;*/
+}
+
+.card-content p{
+    text-align: center;
+    border: solid black 1px;
+    padding: 20px 80px;   
+    font-size: 30px;
+    color: goldenrod;
+    background-color: #223E88;
+    font-family: serif;
+}
+
+.table{
+    display: flex;
+    justify-content: space-between;
+}
+
+.finance-ratio, .info-photo{
+    border: solid black 1px;
+    padding: 40px;
+}
+
+.expend-table output, .finance-table output{
+    border: solid black 1px;
+    padding: 15px;
+    display: block;
+    margin: 1px;
+}
+
+
+.travel-info, .vote-info{
+    border: solid black 1px;
+    padding: 10px;
+    margin:5px 5px; 
+}
+
+.destination-out, .sponsor-out,.category-out, .text-out {
+    border: solid black 1px;
+    padding:10px;
+}
+
