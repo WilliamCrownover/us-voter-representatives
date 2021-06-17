@@ -65,11 +65,13 @@
             totalSupportExpense: 0.00,
             totalOpposeExpense: 0.00
         },
-        voteHistoryCard: []
+        voteHistoryCard: {
+            explanations: []
+        }
     }
 
 // -----Temporary Variables-----
-    var district = 10;
+    var district = 05;
     var state = "WA"
 
 // ----------------------------------------------------------------
@@ -101,7 +103,6 @@ function fetchCandidateTotalsOF() {
             Candidate.financeCard.currentStash = locRes.results[0].last_cash_on_hand_end_period;
 
             apiReturns.push(true);
-            console.log(apiReturns);
         })
         .catch(function (error) {
             return error;
@@ -159,7 +160,6 @@ function fetchCandidateAdvertismentSupportOF() {
             }
 
             apiReturns.push(true);
-            console.log(apiReturns);
         })
         .catch(function (error) {
             return error;
@@ -196,7 +196,6 @@ function fetchCandidateSupportOF() {
             fetchCandidateAdvertismentSupportOF();
 
             apiReturns.push(true);
-            console.log(apiReturns);
         })
         .catch(function (error) {
             return error;
@@ -238,7 +237,52 @@ function fetchCandidateOF() {
             fetchCandidateSupportOF();
 
             apiReturns.push(true);
-            console.log(apiReturns);
+        })
+        .catch(function (error) {
+            return error;
+        });
+}
+
+function parsePersonalExplanations(array) {
+    var objOne = {};
+    objOne["category"] = array[0].category;
+    objOne["date"] = array[0].date;
+    objOne["text"] = array[0].text;
+    Candidate.voteHistoryCard.explanations.push(objOne);
+    
+    for(var i = 1; i < array.length; i++) {
+        if(array[i].text !== array[i-1].text) {
+            var obj = {};
+            obj["category"] = array[i].category;
+            obj["date"] = array[i].date;
+            obj["text"] = array[i].text;
+            Candidate.voteHistoryCard.explanations.push(obj);
+        }
+    }    
+}
+
+function fetchCandidatePersonalExplanationsPP() {
+    var locQueryUrl = `https://api.propublica.org/congress/v1/members/${Candidate.idPP}/explanations/116/votes.json`;
+
+    fetch(locQueryUrl, {
+        headers: {
+            "X-API-Key": keyProPublica
+        }
+        })
+        .then(function (response) {
+            if(!response.ok) {
+                throw response.json();
+            }
+            return response.json();
+        })
+        .then(function (locRes) {
+            console.log("ProPublica Personal Explanation", locRes);
+
+            if(locRes.num_results > 0) {
+                parsePersonalExplanations(locRes.results);
+            }
+            
+            apiReturns.push(true);
         })
         .catch(function (error) {
             return error;
@@ -250,9 +294,9 @@ function fetchCandidatePP() {
 
     fetch(locQueryUrl, {
         headers: {
-        "X-API-Key": keyProPublica
+            "X-API-Key": keyProPublica
         }
-    })
+        })
         .then(function (response) {
             if(!response.ok) {
                 throw response.json();
@@ -267,8 +311,9 @@ function fetchCandidatePP() {
             Candidate.infoCard.lastName = locRes.results[0].last_name;
             Candidate.infoCard.middleInitial = locRes.results[0].middle_name;
 
+            fetchCandidatePersonalExplanationsPP();
+
             apiReturns.push(true);
-            console.log(apiReturns);
         })
         .catch(function (error) {
             return error;
@@ -280,8 +325,7 @@ fetchCandidatePP();
 
 // Using this to check the API responses and see that the Candidate object functions correctly
 var display = setInterval(function() {
-    console.log("~ apiReturns.length", apiReturns.length);
-    if(apiReturns.length === 5) {
+    if(apiReturns.length === 6) {
         clearInterval(display);
         console.log("The Candidate", Candidate);
         console.log("The Candidate Photo:", Candidate.photo());
@@ -292,5 +336,6 @@ var display = setInterval(function() {
         console.log("The Candidate Grassroots Percentage:", Candidate.financeCard.grassRootsPercent());
         console.log("The Candidate Net Gain or Loss to Stash:", Candidate.financeCard.netGainLoss());
         console.log("The Candidate Supporters & Opposition:", Candidate.supportersCard);
+        console.log("The Candidate Vote History:", Candidate.voteHistoryCard);
     }
 }, 500);
