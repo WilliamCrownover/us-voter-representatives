@@ -61,15 +61,24 @@ section{
     margin: 10px 0px 10px;
 }
 section div{
+    position: relative;
+    margin-top: 80px;
     background-color: #40b5e0;
    
 }
 
-section p{
+.listOne{
+    float: left;
+}
+
+.listTwo{
+    float:right;
+}
+
+section li{
     font-size: large;
     margin: 0px;
     color: #fff;
-    
 }
 
 .card-content img{
