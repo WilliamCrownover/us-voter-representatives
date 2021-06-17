@@ -1,90 +1,95 @@
-.grid{
+
+nav, footer{
+    background-color:  #223E88!important;
+}
+
+body{
+    background-color: lightgrey;;
+}
+
+nav img{
+    max-width: 40px;
+  
+}
+
+#grid{
     width: 100vw;
     height: 100vh;
 
     display: grid;
-    grid-template: 200px 1fr 1fr 250px / 1fr 1fr 1fr;
-    
+    grid-template: 1fr 1fr  / 1fr 1fr 1fr;
+    gap: 10px;
 }
 
-header{
-    background-color: #223E88;
-    grid-column-start: 1;
-    grid-column-end: 4;
-}
-
-.logo{
-    padding: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-img{
-    max-width: 100px;
- }
-
-h1{
-    text-align: center;
-    color: goldenrod;
-    font-family: serif;
-}
-
-main{
-    background-color: #D8D8D8;
-    grid-row-start: 2;
-    grid-column-start: 2;
-    grid-column-end: 3;
-}
-
-footer{
-    grid-row-start: 4;
+#info-card{
+    grid-row-start: 1;
     grid-column-start:1;
-    grid-column-end: 4;
+}
+
+#travel-card{
+    grid-row-start: 1;
+    grid-column-start:2;
+}
+
+#finance-card{
+    grid-row-start: 1;
+    grid-column-start:3;
 }
 
 
-nav{
-    grid-row-start:2;
-    grid-column-start: 1;
-    margin:7.5px 0px 15px;
-  
+#vote-history-card{
+    grid-row-start: 2;
+    grid-column-start:1;
 }
 
-.nav-wrapper{
-    margin: 5px 5px;
-    border: solid black 1px;
+#supporters-card{
+    grid-row-start: 2;
+    grid-column-start:2;
+}
+
+#bonus-card{
+    grid-row-start: 2;
+    grid-column-start:3;
+}
+
+
+section{
+    background-color:  #0168AD;;
+    width: 100%;
+    height: 200px;
+    padding: 30px 30px;
+    margin: 10px 0px 10px;
+}
+section div{
+    background-color: #40b5e0;
+   
+}
+
+section p{
+    font-size: large;
+    margin: 0px;
+    color: #fff;
     
 }
 
-body{
-    background-color: #D8D8D8;
+.card-content img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-form, .page-footer.page-footer{
-    background-color: #800507;
-}
-
-.card.card{
-border: solid black 1px;
-width: 200%;
-padding:15px;
-/*margin:  5px 5px;*/
+.card{
+    margin: 6px 0px 6px !important;
 }
 
 .card-content p{
     text-align: center;
     border: solid black 1px;
-    padding: 20px 80px;   
+    padding: 20px 20px;   
     font-size: 30px;
-    color: goldenrod;
-    background-color: #223E88;
+    color: #fff;
+    background-color: red;
     font-family: serif;
-}
-
-.table{
-    display: flex;
-    justify-content: space-between;
 }
 
 .finance-ratio, .info-photo{
@@ -110,4 +115,3 @@ padding:15px;
     border: solid black 1px;
     padding:10px;
 }
-

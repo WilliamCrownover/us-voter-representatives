@@ -12,44 +12,43 @@
     <title>US Voter Representatives</title>
 </head>
 <body>
+   
 
-    <div class="grid">
+    <nav>
+        <div class="nav-wrapper">
+          <a class="brand-logo"><img src="favicon.png" alt="logo">US Voter Representatives Lookup Tool</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="#!" link="">Home</a></li>
+                <li><a href="#!" link="">About</a></li>
+                <li><a href="#!" link="">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        <header>
-            <div class= "logo">
-                <img src="favicon.png" alt="logo">
-                <h1>US Voter Representatives Lookup Tool</h1>
-            </div>
-        </header>
-    
-    
-        <nav>
-            <div class="nav-wrapper">
-                <form>
+    <section>
+
+        <div>
+            <p>Are you interested in voting but unsure where to start?</p>
+
+            <nav>
+                <div class="nav-wrapper">
+                  <form>
                     <div class="input-field">
-                    <input id="search-name" type="search" required>
-                    <label class="label-icon" for="search">Name<i class="material-icons"></i></label>
-                    <i class="material-icons">close</i>
+                      <input id="search" type="search" required>
+                      <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                      <i class="material-icons">close</i>
                     </div>
-                </form>
-            </div>
-    
-            <div class="nav-wrapper">
-                <form>
-                    <div class="input-field">
-                    <input id="search-district" type="search" required>
-                    <label class="label-icon" for="search">District<i class="material-icons"></i></label>
-                    <i class="material-icons">close</i>
-                    </div>
-                </form>
-             </div>
-        </nav>
-     
-    
-    
-     <main>
+                  </form>
+                </div>
+              </nav>
+        </div>
+        
+    </section>
+
+    <main id="grid">
         <div class="card" id="info-card">
             <div class="card-content">
+                <img src="education_icon_142625.png" alt="info" width="100" height="100">
                 <p>Information Card</p>
             </div>
             <div class="table">
@@ -59,16 +58,36 @@
                     <output>Party</output>
                     <output>Contact Link</output>
                 </div>
-    
+
                 <div class="info-photo">
                     <p>Photo</p>
                 </div>
             </div>
         </div>
-    
-    
+
+        <div class="card" id="travel-card">
+            <div class="card-content">
+                <img src="travel_icon_142598.png" alt="info" width="100" height="100">
+                <p>Travel Card</p>
+            </div>
+
+            <div class="travel-info">
+                <p>Travel Information</p>
+                    <output class="destination-out">Destination</output>
+                    <output class="sponsor-out">Sponsor</output>
+            </div>
+            
+           <div class="travel-info">
+                <p>Travel Information</p>
+                    <output class="destination-out">Destination</output>
+                    <output class="sponsor-out">Sponsor</output>
+            </div>
+        </div> 
+
+
         <div class="card" id="finance-card">
             <div class="card-content">
+                <img src="flatten_the_curve_icon_142602.png" alt="info" width="100" height="100">
             <p>Finance Card</p>
             </div>
             <div class="table">
@@ -77,44 +96,25 @@
                     <output>Comittee</output>
                     <output>Independent</output>
                 </div>
-    
+
                 <div class="finance-ratio">
                     <p>Ratio Chart</p>
                 </div>
-    
+
                 <div class="finance-table">
                     <output>Expenditure</output>
                     <output>Current Stash</output>
                 </div>
             </div>
         </div>
-    
-    
-        <div class="card" id="supporters-card">
-            <div class="card-content">
-                <p>Supporters Card</p>
-            </div>
-                <div class="table">
-                    <div class="expend-table">
-                        <output>Committee</output>
-                        <output>Expenditure</output>
-                        <output>Support or Oppose</output>
-                    </div>
-    
-                    <div class="expend-table">
-                        <output>Committee</output>
-                        <output>Expenditure</output>
-                        <output>Support or Oppose</output>
-                    </div>
-                </div>
-        </div>
-    
-    
+
+
         <div class="card" id="vote-history-card">
             <div class="card-content">
+                <img src="dialogue_icon_142637.png" alt="info" width="100" height="100">
             <p>Vote History Card</p>
             </div>
-    
+
             <div class="vote-info">
                 <p>The Great Excuse</p>
                     <output class="category-out">Category</output>
@@ -126,63 +126,85 @@
                     <output class="category-out">Category</output>
                     <output class="text-out">Reason</output>
             </div>
-    
+
         </div>
-    
-    
-        <div class="card" id="travel-card">
-                <div class="card-content">
-                    <p>Travel Card</p>
+
+
+        <div class="card" id="supporters-card">
+            <div class="card-content">
+                <img src="thumbs_up_icon_142634.png" alt="info" width="100" height="100">
+                <p>Supporters Card</p>
+            </div>
+                <div class="table">
+                    <div class="expend-table">
+                        <output>Committee</output>
+                        <output>Expenditure</output>
+                        <output>Support or Oppose</output>
+                    </div>
+
+                    <div class="expend-table">
+                        <output>Committee</output>
+                        <output>Expenditure</output>
+                        <output>Support or Oppose</output>
+                    </div>
                 </div>
-    
-                <div class="travel-info">
-                    <p>Travel Information</p>
-                        <output class="destination-out">Destination</output>
-                        <output class="sponsor-out">Sponsor</output>
-                </div>
-                
-                <div class="travel-info">
-                    <p>Travel Information</p>
-                        <output class="destination-out">Destination</output>
-                        <output class="sponsor-out">Sponsor</output>
-                </div>
-        </div> 
-    
+        </div>
+
+
+        <div class="card" id="bonus-card">
+            <div class="card-content">
+                <img src="care_icon_142694.png" alt="info" width="100" height="100">
+                <p>Bonus Card</p>
+            </div>
+
+            <div class="travel-info">
+                <p>Travel Information</p>
+                    <output class="destination-out">Destination</output>
+                    <output class="sponsor-out">Sponsor</output>
+            </div>
+            
+            <div class="travel-info">
+                <p>Travel Information</p>
+                    <output class="destination-out">Destination</output>
+                    <output class="sponsor-out">Sponsor</output>
+            </div>
+    </div> 
+
     </main>
-    
-    
+
+
     <footer class="page-footer">
         <div class="container">
-          <div class="row">
+        <div class="row">
             <div class="col l6 s12">
-              <h5 class="white-text">Helpful Links</h5>
-              <ul>
+            <h5 class="white-text">Helpful Links</h5>
+            <ul>
                 <li><a class="grey-text text-lighten-3" href="#!">Additional Resources</a></li>
                 <li><a class="grey-text text-lighten-3" href="#!">FAQ</a></li>
                 <li><a class="grey-text text-lighten-3" href="#!">Maps</a></li>
-              </ul>
+            </ul>
             </div>
             <div class="col l4 offset-l2 s12">
-              <h5 class="white-text">Helpful Links</h5>
-              <ul>
+            <h5 class="white-text">More Info.</h5>
+            <ul>
                 <li><a class="grey-text text-lighten-3" href="#!">Meet the Developers</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Contact Information</a></li>
-              </ul>
+                <li><a class="grey-text text-lighten-3" href="#!">Social Media</a></li>
+            </ul>
             </div>
-          </div>
+        </div>
         </div>
         <div class="footer-copyright">
-          <div class="container">
-          © 2020 Copyright Text
-          </div>
+        <div class="container">
+        © 2020 Copyright Text
+        </div>
         </div>
     </footer>
-    
-    </div>
-    
-    
 
 
+
+
+    
+    <script src="./assets/script.js"></script>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- Materialize -->
