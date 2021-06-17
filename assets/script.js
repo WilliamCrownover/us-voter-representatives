@@ -62,12 +62,15 @@
         supportersCard: {
             support: [],
             oppose: [],
-        }
+            totalSupportExpense: 0.00,
+            totalOpposeExpense: 0.00
+        },
+        voteHistoryCard: []
     }
 
 // -----Temporary Variables-----
-    var district = 04;
-    var state = "OH"
+    var district = 10;
+    var state = "WA"
 
 // ----------------------------------------------------------------
 // FUNCTIONS
@@ -91,12 +94,14 @@ function fetchCandidateTotalsOF() {
         })
         .then(function (locRes) {
             console.log("openFEC Candidate Totals", locRes);
+            
             Candidate.financeCard.totalRaised = locRes.results[0].contributions;
             Candidate.financeCard.expenditure = locRes.results[0].disbursements;
             Candidate.financeCard.independentContributions = locRes.results[0].individual_contributions;
             Candidate.financeCard.currentStash = locRes.results[0].last_cash_on_hand_end_period;
 
             apiReturns.push(true);
+            console.log(apiReturns);
         })
         .catch(function (error) {
             return error;
@@ -104,8 +109,9 @@ function fetchCandidateTotalsOF() {
 }
 
 function parseSupporters(array) {
-    var totalSupport = 0;
-    var totalOppose = 0;
+    var totalSupport = Candidate.supportersCard.totalSupportExpense;
+    var totalOppose = Candidate.supportersCard.totalOpposeExpense;
+    
     for(var i = 0; i < array.length; i++) {
         var obj = {};
         if(array[i].support_oppose_indicator === "S") {
@@ -120,22 +126,58 @@ function parseSupporters(array) {
             Candidate.supportersCard.oppose.push(obj);
         }
     }
-    Candidate.supportersCard["totalSupportExpense"] = totalSupport.toFixed(2);
-    Candidate.supportersCard["totalOpposeExpense"] = totalOppose.toFixed(2);
+    
+    Candidate.supportersCard.totalSupportExpense = parseInt(totalSupport.toFixed(2));
+    Candidate.supportersCard.totalOpposeExpense = parseInt(totalOppose.toFixed(2));
+}
+
+function fetchCandidateAdvertismentSupportOF() {
+    var locQueryUrl = `${urlOF}/communication_costs/by_candidate/?
+        sort_nulls_last=false&
+        candidate_id=${Candidate.idOF}&
+        election_full=true&
+        sort_hide_null=false&
+        page=1&
+        per_page=50&
+        sort_null_only=false&
+        api_key=${keyOpenFEC}&
+        cycle=2020`
+        .replace(/\s/g, '');
+
+    fetch(locQueryUrl)
+        .then(function (response) {
+            if(!response.ok) {
+                throw response.json();
+            }
+            return response.json();
+        })
+        .then(function (locRes) {
+            console.log("openFEC Candidate Support Advertisments", locRes);
+            
+            if(locRes.pagination.count > 0) {
+                parseSupporters(locRes.results);
+            }
+
+            apiReturns.push(true);
+            console.log(apiReturns);
+        })
+        .catch(function (error) {
+            return error;
+        });
 }
 
 function fetchCandidateSupportOF() {
     var locQueryUrl = `${urlOF}/schedules/schedule_e/by_candidate/?
-    sort_nulls_last=false&
-    candidate_id=${Candidate.idOF}&
-    election_full=true&
-    sort_hide_null=false&
-    page=1&
-    per_page=50&
-    sort_null_only=false&
-    api_key=${keyOpenFEC}&
-    cycle=2020`
-    .replace(/\s/g, '');
+        sort_nulls_last=false&
+        candidate_id=${Candidate.idOF}&
+        election_full=true&
+        sort_hide_null=false&
+        page=1&
+        per_page=50&
+        sort_null_only=false&
+        api_key=${keyOpenFEC}&
+        cycle=2020`
+        .replace(/\s/g, '');
     
     fetch(locQueryUrl)
         .then(function (response) {
@@ -146,9 +188,15 @@ function fetchCandidateSupportOF() {
         })
         .then(function (locRes) {
             console.log("openFEC Candidate Support Schedule_e", locRes);
-            parseSupporters(locRes.results);
+            
+            if(locRes.pagination.count > 0) {
+                parseSupporters(locRes.results);
+            }
+
+            fetchCandidateAdvertismentSupportOF();
 
             apiReturns.push(true);
+            console.log(apiReturns);
         })
         .catch(function (error) {
             return error;
@@ -180,6 +228,7 @@ function fetchCandidateOF() {
         })
         .then(function (locRes) {
             console.log("openFEC Candidate Search", locRes);
+            
             Candidate.idOF = locRes.results[0].candidate_id;
             Candidate.infoCard.district = locRes.results[0].district_number;
             Candidate.infoCard.partyShort = locRes.results[0].party;
@@ -189,6 +238,7 @@ function fetchCandidateOF() {
             fetchCandidateSupportOF();
 
             apiReturns.push(true);
+            console.log(apiReturns);
         })
         .catch(function (error) {
             return error;
@@ -211,12 +261,14 @@ function fetchCandidatePP() {
         })
         .then(function (locRes) {
             console.log("ProPublica Candidate Search", locRes);
+            
             Candidate.infoCard.firstName = locRes.results[0].first_name;
             Candidate.idPP = locRes.results[0].id;
             Candidate.infoCard.lastName = locRes.results[0].last_name;
             Candidate.infoCard.middleInitial = locRes.results[0].middle_name;
 
             apiReturns.push(true);
+            console.log(apiReturns);
         })
         .catch(function (error) {
             return error;
@@ -228,7 +280,8 @@ fetchCandidatePP();
 
 // Using this to check the API responses and see that the Candidate object functions correctly
 var display = setInterval(function() {
-    if(apiReturns.length === 4) {
+    console.log("~ apiReturns.length", apiReturns.length);
+    if(apiReturns.length === 5) {
         clearInterval(display);
         console.log("The Candidate", Candidate);
         console.log("The Candidate Photo:", Candidate.photo());
