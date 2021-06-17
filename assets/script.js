@@ -68,11 +68,15 @@
         voteHistoryCard: {
             explanations: [],
             votes: []
+        },
+        travelCard: {
+            tripsCandidate: [],
+            tripsOther: []
         }
     }
 
 // -----Temporary Variables-----
-    var district = 07;
+    var district = 04;
     var state = "OH"
 
 // ----------------------------------------------------------------
@@ -266,9 +270,9 @@ function fetchCandidatePersonalExplanationsPP() {
     var locQueryUrl = `https://api.propublica.org/congress/v1/members/${Candidate.idPP}/explanations/117/votes.json`;
 
     fetch(locQueryUrl, {
-        headers: {
-            "X-API-Key": keyProPublica
-        }
+            headers: {
+                "X-API-Key": keyProPublica
+            }
         })
         .then(function (response) {
             if(!response.ok) {
@@ -312,9 +316,9 @@ function fetchCandidateVotePositions() {
     var locQueryUrl = `https://api.propublica.org/congress/v1/members/${Candidate.idPP}/votes.json`;
 
     fetch(locQueryUrl, {
-        headers: {
-            "X-API-Key": keyProPublica
-        }
+            headers: {
+                "X-API-Key": keyProPublica
+            }
         })
         .then(function (response) {
             if(!response.ok) {
@@ -336,13 +340,61 @@ function fetchCandidateVotePositions() {
         });
 }
 
+function parseTrips(array) {
+    for(var i = 0; i < array.length; i++) {
+        var obj = {};
+        if(array[i].is_member === 1 && array[i].filing_type === "Original") {
+            obj["departure"] = array[i].departure_date;
+            obj["return"] = array[i].return_date;
+            obj["destination"] = array[i].destination;
+            obj["sponsor"] = array[i].sponsor;
+            Candidate.travelCard.tripsCandidate.push(obj);
+        } else if(array[i].is_member === 0 && array[i].filing_type === "Original") {
+            obj["traveler"] = array[i].traveler;
+            obj["departure"] = array[i].departure_date;
+            obj["return"] = array[i].return_date;
+            obj["destination"] = array[i].destination;
+            obj["sponsor"] = array[i].sponsor;
+            Candidate.travelCard.tripsOther.push(obj);
+        }
+    }
+}
+
+function fetchCandidateTravels() {
+    var locQueryUrl = `https://api.propublica.org/congress/v1/members/${Candidate.idPP}/private-trips.json`;
+
+    fetch(locQueryUrl, {
+            headers: {
+                "X-API-Key": keyProPublica
+            }
+        })
+        .then(function (response) {
+            if(!response.ok) {
+                throw response.json();
+            }
+            return response.json();
+        })
+        .then(function (locRes) {
+            console.log("ProPublica Trips", locRes);
+            
+            if(locRes.num_results > 0) {
+                parseTrips(locRes.results);
+            }
+
+            apiReturns.push(true);
+        })
+        .catch(function (error) {
+            return error;
+        });
+}
+
 function fetchCandidatePP() {
     var locQueryUrl = `https://api.propublica.org/congress/v1/members/house/${state}/${district}/current.json`;
 
     fetch(locQueryUrl, {
-        headers: {
-            "X-API-Key": keyProPublica
-        }
+            headers: {
+                "X-API-Key": keyProPublica
+            }
         })
         .then(function (response) {
             if(!response.ok) {
@@ -360,6 +412,7 @@ function fetchCandidatePP() {
 
             fetchCandidatePersonalExplanationsPP();
             fetchCandidateVotePositions();
+            fetchCandidateTravels();
 
             apiReturns.push(true);
         })
@@ -373,7 +426,7 @@ fetchCandidatePP();
 
 // Using this to check the API responses and see that the Candidate object functions correctly
 var display = setInterval(function() {
-    if(apiReturns.length === 7) {
+    if(apiReturns.length === 8) {
         clearInterval(display);
         console.log("The Candidate", Candidate);
         console.log("The Candidate Photo:", Candidate.photo());
@@ -385,5 +438,6 @@ var display = setInterval(function() {
         console.log("The Candidate Net Gain or Loss to Stash:", Candidate.financeCard.netGainLoss());
         console.log("The Candidate Supporters & Opposition:", Candidate.supportersCard);
         console.log("The Candidate Vote History:", Candidate.voteHistoryCard);
+        console.log("The Candidate Trips:", Candidate.travelCard);
     }
 }, 500);
