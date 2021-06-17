@@ -66,13 +66,14 @@
             totalOpposeExpense: 0.00
         },
         voteHistoryCard: {
-            explanations: []
+            explanations: [],
+            votes: []
         }
     }
 
 // -----Temporary Variables-----
-    var district = 05;
-    var state = "WA"
+    var district = 07;
+    var state = "OH"
 
 // ----------------------------------------------------------------
 // FUNCTIONS
@@ -262,7 +263,7 @@ function parsePersonalExplanations(array) {
 }
 
 function fetchCandidatePersonalExplanationsPP() {
-    var locQueryUrl = `https://api.propublica.org/congress/v1/members/${Candidate.idPP}/explanations/116/votes.json`;
+    var locQueryUrl = `https://api.propublica.org/congress/v1/members/${Candidate.idPP}/explanations/117/votes.json`;
 
     fetch(locQueryUrl, {
         headers: {
@@ -282,6 +283,52 @@ function fetchCandidatePersonalExplanationsPP() {
                 parsePersonalExplanations(locRes.results);
             }
             
+            apiReturns.push(true);
+        })
+        .catch(function (error) {
+            return error;
+        });
+}
+
+function parseVotePositions(array) {
+    for(var i = 0; i < array.length; i++) {
+        var obj = {};
+        obj["date"] = array[i].date;
+        obj["billID"] = array[i].bill.number;
+        obj["title"] = array[i].description;
+        obj["description"] = array[i].bill.title || "";
+        obj["question"] = array[i].question;
+        obj["position"] = array[i].position;
+        obj["result"] = array[i].result;
+        obj["totalYes"] = array[i].total.yes;
+        obj["totalNo"] = array[i].total.no;
+        obj["totalPresent"] = array[i].total.present;
+        obj["totalNotVoting"] = array[i].total.not_voting;
+        Candidate.voteHistoryCard.votes.push(obj);
+    }
+}
+
+function fetchCandidateVotePositions() {
+    var locQueryUrl = `https://api.propublica.org/congress/v1/members/${Candidate.idPP}/votes.json`;
+
+    fetch(locQueryUrl, {
+        headers: {
+            "X-API-Key": keyProPublica
+        }
+        })
+        .then(function (response) {
+            if(!response.ok) {
+                throw response.json();
+            }
+            return response.json();
+        })
+        .then(function (locRes) {
+            console.log("ProPublica Vote Positions", locRes);
+            
+            if(locRes.results[0].num_results > 0) {
+                parseVotePositions(locRes.results[0].votes);
+            }
+
             apiReturns.push(true);
         })
         .catch(function (error) {
@@ -312,6 +359,7 @@ function fetchCandidatePP() {
             Candidate.infoCard.middleInitial = locRes.results[0].middle_name;
 
             fetchCandidatePersonalExplanationsPP();
+            fetchCandidateVotePositions();
 
             apiReturns.push(true);
         })
@@ -325,7 +373,7 @@ fetchCandidatePP();
 
 // Using this to check the API responses and see that the Candidate object functions correctly
 var display = setInterval(function() {
-    if(apiReturns.length === 6) {
+    if(apiReturns.length === 7) {
         clearInterval(display);
         console.log("The Candidate", Candidate);
         console.log("The Candidate Photo:", Candidate.photo());
