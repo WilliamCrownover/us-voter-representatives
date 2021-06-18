@@ -76,8 +76,8 @@
     }
 
 // -----Temporary Variables-----
-    var district = 04;
-    var state = "OH"
+    var district = 01;
+    var state = "WA"
 
 // ----------------------------------------------------------------
 // FUNCTIONS
