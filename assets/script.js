@@ -51,7 +51,7 @@
                 return (this.totalRaised - this.independentContributions).toFixed(2);
             },
             grassRootsPercent: function() {
-                return ((this.independentContributions / this.totalRaised) * 100).toFixed(2);
+                return parseInt(((this.independentContributions / this.totalRaised) * 100).toFixed(2));
             },
             expenditure: "",
             currentStash: "",
