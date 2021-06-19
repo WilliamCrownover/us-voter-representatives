@@ -379,6 +379,8 @@ function fetchCandidateTravels() {
             
             if(locRes.num_results > 0) {
                 parseTrips(locRes.results);
+//calls to generate travel card
+                fillTravelCard(Candidate.travelCard.tripsCandidate);
             }
 
             apiReturns.push(true);
