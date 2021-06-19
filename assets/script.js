@@ -107,6 +107,8 @@ function fetchCandidateTotalsOF() {
             Candidate.financeCard.independentContributions = locRes.results[0].individual_contributions;
             Candidate.financeCard.currentStash = locRes.results[0].last_cash_on_hand_end_period;
 
+            displayFinances(Candidate.financeCard);
+
             apiReturns.push(true);
         })
         .catch(function (error) {
