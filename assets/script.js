@@ -76,8 +76,12 @@
     }
 
 // -----Temporary Variables-----
-    var district = 22;
-    var state = "CA"
+    var district = 01;
+    var state = "WA"
+
+    //pls leave for now - used for testing vote history card
+    // var district = 22;
+    // var state = "CA"
 
 // ----------------------------------------------------------------
 // FUNCTIONS
