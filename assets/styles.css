@@ -125,3 +125,8 @@ section li{
     border: solid black 1px;
     padding:10px;
 }
+
+.cardWrapper {
+    padding: 5px;
+    margin-left: 5px;
+}
