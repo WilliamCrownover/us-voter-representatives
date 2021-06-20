@@ -443,5 +443,10 @@ var display = setInterval(function() {
         console.log("The Candidate Supporters & Opposition:", Candidate.supportersCard);
         console.log("The Candidate Vote History:", Candidate.voteHistoryCard);
         console.log("The Candidate Trips:", Candidate.travelCard);
+
+        // This is needed to delay the collapsible method so it applies properly
+        setTimeout(function() {
+            $('.collapsible').collapsible();
+        }, 500);
     }
 }, 500);

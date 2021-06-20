@@ -10,18 +10,37 @@ var formatter = new Intl.NumberFormat('en-US', {
 
 function displayFinances(data) {
     financeDataContainerEl.append(`
-        <div class="finance-ratio" style="padding: 15px">
-            <p style="margin: 5px 0">Percentage of Contributions</p>
-            <div style="background-color: yellow; padding: 3px 5px; width: ${100-(data.grassRootsPercent())}%">Comittee<br> ${100-(data.grassRootsPercent())}%</div>
-            <div style="background-color: green; padding: 3px 5px; width: ${data.grassRootsPercent()}%">Independent<br> ${data.grassRootsPercent()}%</div>
-        </div>
-        <div class="finance-table">
-            <output>Total Raised: ${formatter.format(data.totalRaised)}</output>
-            <output>Comittee: ${formatter.format(data.nonIndependentContributions())}</output>
-            <output>Independent: ${formatter.format(data.independentContributions)}</output>
-            <output>Expenditure: ${formatter.format(data.expenditure)}</output>
-            <output>Current War Chest: ${formatter.format(data.currentStash)}</output>
-            <output>Net Gain or Loss: ${formatter.format(data.netGainLoss())}</output>
-        </div>
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header">Percentage of Contributions</div>
+                <div class="collapsible-body">
+                    <div style="background-color: yellow; padding: 3px 5px; width: ${100-(data.grassRootsPercent())}%">Comittee<br> ${100-(data.grassRootsPercent())}%</div>
+                    <div style="background-color: green; padding: 3px 5px; width: ${data.grassRootsPercent()}%">Independent<br> ${data.grassRootsPercent()}%</div>
+                </div>
+            </li>
+        </ul>
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header">Total Raised: ${formatter.format(data.totalRaised)}</div>
+                <div class="collapsible-body">
+                    <p>Comittee: ${formatter.format(data.nonIndependentContributions())}</p>
+                    <p>Independent: ${formatter.format(data.independentContributions)}</p>
+                </div>
+            </li>
+        </ul>
+        <p style="margin-left: 15px">Expenditure: ${formatter.format(data.expenditure)}</p>
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header">Current War Chest: ${formatter.format(data.currentStash)}</div>
+                <div class="collapsible-body">Net Gain or Loss: ${formatter.format(data.netGainLoss())}</div>
+            </li>
+        </ul>
     `)
 }
+
+// var displayFinanceData = setInterval(function() {
+//     if(apiReturns.length === 8) {
+//         clearInterval(displayFinanceData);
+//         displayFinances(Candidate.financeCard);
+//     }
+// }, 500);
