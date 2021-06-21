@@ -6,16 +6,23 @@ var displayVotes = setInterval(function() {
         if(apiReturns.length >= 8) {
             clearInterval(displayVotes);
             writeVoterInfoCard();
-                // appendVotesData(); 
-                // appendExplanationsData(); 
         }
     }, 500);
 
 function appendVotesData() {
+    var voteTitle = "";
     for(i = 0; i < Candidate.voteHistoryCard.votes.length; i++) {
+
+        if(Candidate.voteHistoryCard.votes[i].title == "") {
+        voteTitle = "Vote action has data, but no title.";
+        }
+        else {
+        var voteTitle = Candidate.voteHistoryCard.votes[i].title;
+        }
+
         $("#vote-history-content").append(`
             <li>
-                <div class="collapsible-header" style="font-weight:bold"><span style="font-weight:bold">Title:\u00A0${Candidate.voteHistoryCard.votes[i].title}</span></div>
+                <div class="collapsible-header" style="font-weight:bold"><span style="font-weight:bold">Title:\u00A0${voteTitle}</span></div>
                 <div class="collapsible-body"> 
 
                     <p><span style="font-weight:bold">Date:\u00A0</span>${Candidate.voteHistoryCard.votes[i].date}</p>
@@ -33,11 +40,19 @@ function appendVotesData() {
             </li>
         `);
     }
-    // $("#vote-history-content").find(".collapsible").collapsible(); 
 }
 
 function appendExplanationsData() {
-    for(i = 0; i < Candidate.voteHistoryCard.explanations.length; i++) {
+    if(!Candidate.voteHistoryCard.explanations.length) {
+        $("#missed-votes-content").append(`
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header" style="font-weight:bold"><span style="font-weight:bold">No missed votes recorded for candidate.</span></div>
+            </li>
+        </ul>
+        `)
+    }
+    else {
         $("#missed-votes-content").append(`
         <ul class="collapsible" data-collapsible="accordion">
             <li>
@@ -51,6 +66,7 @@ function appendExplanationsData() {
         `)
     }
 }
+
 
 function writeVoterInfoCard() {
     appendVotesData(); 
