@@ -136,12 +136,13 @@ section li{
 }
 
 #districtSelect {
-    width: 10%
+    width: 90px
 }
 
 select.browser-default {
     display: inline-block;
     margin-right: 10px;
+    width: 140px;
 }
 
 h5 {
@@ -153,6 +154,10 @@ h5 {
     margin-top: 12px;
 }
 
+#repSearchForm {
+    position: relative;
+}
+
 .btn {
     height: 45px;
     margin-bottom: 5px;
@@ -161,4 +166,18 @@ h5 {
 
 .btn:hover {
     background-color: #40b5e0;
+}
+
+h6 {
+    box-sizing: border-box;
+    color: white;
+    display: inline-block;
+    margin: 0;
+    margin-left: 15px;
+    margin-top: 2px;
+    position: absolute;
+}
+
+.hidden {
+    display: none;
 }

@@ -11,6 +11,7 @@
     var repSearchFormEl = $("#repSearchForm");
     var stateSelectEl = $("#stateSelect");
     var districtSelect = $("#districtSelect");
+    var noDistrictText = $("#noDistrict");
 
 // Tracking Variables
     var apiReturns = [];
@@ -462,6 +463,13 @@ function fetchCandidatePP() {
         });
 }
 
+function noDistrict() {
+    noDistrictText.removeClass("hidden");
+    var displayNoDistrictText = setTimeout(function() {
+        noDistrictText.addClass("hidden");
+    }, 3500);
+}
+
 function handleSearchSubmit(event) {
     event.preventDefault();
 
@@ -472,7 +480,7 @@ function handleSearchSubmit(event) {
         if(stateData[i].abrv === state) {
             if(tempDistrictNumber > stateData[i].districtCount) {
                 console.log("No District");
-                // noDistrict();
+                noDistrict();
                 return
             }
         }
