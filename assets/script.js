@@ -81,7 +81,8 @@
     };
 
 // -----Temporary Variables-----
-    var district;
+    var districtOF;
+    var districtPP;
     var state;
 
     //pls leave for now - used for testing vote history card
@@ -244,7 +245,7 @@ function fetchCandidateOF() {
         page=1&
         state=${state}&
         election_year=2020&
-        district=${district}&
+        district=${districtOF}&
         sort_null_only=false&
         api_key=${keyOpenFEC}&
         cycle=2022`
@@ -418,7 +419,7 @@ function fetchCandidateTravels() {
 }
 
 function fetchCandidatePP() {
-    var locQueryUrl = `https://api.propublica.org/congress/v1/members/house/${state}/${district}/current.json`;
+    var locQueryUrl = `https://api.propublica.org/congress/v1/members/house/${state}/${districtPP}/current.json`;
 
     fetch(locQueryUrl, {
             headers: {
@@ -450,27 +451,54 @@ function fetchCandidatePP() {
         });
 }
 
+function handleSearchSubmit(event) {
+    event.preventDefault();
+
+    state = stateSelectEl.val();
+    var tempDistrictNumber = parseInt(districtSelect.val());
+
+    for(var i = 0; i < stateData.length; i++) {
+        if(stateData[i].abrv === state) {
+            if(tempDistrictNumber > stateData[i].districtCount) {
+                console.log("No District");
+                // noDistrict();
+                return
+            }
+        }
+    }
+    
+    if(oneDistrictStates.includes(state)) {
+        districtOF = "00";
+    } else {
+        districtOF = districtSelect.val();
+    }
+
+    districtPP = districtSelect.val();
+
+    fetchCandidateOF();
+    fetchCandidatePP();
+}
+
 loadStateSelection();
 loadDistrictSelection();
 
-// fetchCandidateOF();
-// fetchCandidatePP();
+repSearchFormEl.on("submit", handleSearchSubmit)
 
 // Using this to check the API responses and see that the Candidate object functions correctly
 var display = setInterval(function() {
     if(apiReturns.length === 8) {
         clearInterval(display);
-        console.log("The Candidate", Candidate);
-        console.log("The Candidate Photo:", Candidate.photo());
-        console.log("The Candidate Full Name:", Candidate.infoCard.fullName());
-        console.log("The Candidate Seat:", Candidate.infoCard.seat());
-        console.log("The Candidate Party:", Candidate.infoCard.party());
-        console.log("The Candidate Commitee Contributions:", Candidate.financeCard.nonIndependentContributions());
-        console.log("The Candidate Grassroots Percentage:", Candidate.financeCard.grassRootsPercent());
-        console.log("The Candidate Net Gain or Loss to Stash:", Candidate.financeCard.netGainLoss());
-        console.log("The Candidate Supporters & Opposition:", Candidate.supportersCard);
-        console.log("The Candidate Vote History:", Candidate.voteHistoryCard);
-        console.log("The Candidate Trips:", Candidate.travelCard);
+        // console.log("The Candidate", Candidate);
+        // console.log("The Candidate Photo:", Candidate.photo());
+        // console.log("The Candidate Full Name:", Candidate.infoCard.fullName());
+        // console.log("The Candidate Seat:", Candidate.infoCard.seat());
+        // console.log("The Candidate Party:", Candidate.infoCard.party());
+        // console.log("The Candidate Commitee Contributions:", Candidate.financeCard.nonIndependentContributions());
+        // console.log("The Candidate Grassroots Percentage:", Candidate.financeCard.grassRootsPercent());
+        // console.log("The Candidate Net Gain or Loss to Stash:", Candidate.financeCard.netGainLoss());
+        // console.log("The Candidate Supporters & Opposition:", Candidate.supportersCard);
+        // console.log("The Candidate Vote History:", Candidate.voteHistoryCard);
+        // console.log("The Candidate Trips:", Candidate.travelCard);
 
         // This is needed to delay the collapsible method so it applies properly
         setTimeout(function() {
