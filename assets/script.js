@@ -7,6 +7,11 @@
     // ProPublica will be designated with "PP" in variable and function names
     var urlOF = "https://api.open.fec.gov/v1";
 
+// Elements
+    var repSearchFormEl = $("#repSearchForm");
+    var stateSelectEl = $("stateSelect");
+    var districtSelect = $("districtSelect");
+
 // Tracking Variables
     var apiReturns = [];
 
@@ -73,11 +78,11 @@
             tripsCandidate: [],
             tripsOther: []
         }
-    }
+    };
 
 // -----Temporary Variables-----
-    var district = 01;
-    var state = "WA"
+    var district;
+    var state;
 
     //pls leave for now - used for testing vote history card
     // var district = 22;
