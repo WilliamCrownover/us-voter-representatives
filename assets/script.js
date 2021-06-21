@@ -406,6 +406,9 @@ function fetchCandidateTravels() {
             console.log("ProPublica Trips", locRes);
             
             if(locRes.num_results > 0) {
+                Candidate.travelCard.tripsCandidate = [];
+                Candidate.travelCard.tripsOther = [];
+
                 parseTrips(locRes.results);
 //calls to generate travel card
                 fillTravelCard(Candidate.travelCard.tripsCandidate);
