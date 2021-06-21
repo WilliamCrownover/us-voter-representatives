@@ -16,7 +16,8 @@
 
     <nav>
         <div class="nav-wrapper">
-          <a class="brand-logo"><img src="./assets/images/favicon.png" alt="logo">US Voter Representatives Lookup Tool</a>
+            <img src="./assets/images/favicon.png" alt="logo" id="topFavicon"> 
+            <a class="brand-logo">US Voter Representatives Lookup Tool</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="#!" link="">Home</a></li>
                 <li><a href="#!" link="">About</a></li>
@@ -26,19 +27,17 @@
     </nav>
 
     <section>
-        <div>
-            <nav>
-                <div class="nav-wrapper">
-                  <form>
-                    <div class="input-field">
-                      <input id="search" type="search" required>
-                      <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                      <i class="material-icons">close</i>
-                    </div>
-                  </form>
-                </div>
-              </nav>
-        </div>
+        <form id="repSearchForm">
+            <h5>Choose District</h5>
+            <select class="browser-default" id="stateSelect">
+                <option value="" disabled selected>State</option>
+            </select>
+            <select class="browser-default" id="districtSelect">
+                <option value="" disabled selected>Number</option>
+            </select>
+            <button type="submit" class="btn">Search</button>
+        </form>
+                
 
         <ul class="listOne">
             <li>Are you interested in voting but unsure where to start?</li>
@@ -46,9 +45,8 @@
         </ul>
         <ul class="listTwo">
             <li>Well, we're here to help.</li>
-            <li>Use the searchbar below to review candidate information.</li>
+            <li>Use the search above to review candidate information.</li>
         </ul>
-        
     </section>
 
     <main id="grid">
