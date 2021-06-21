@@ -164,6 +164,9 @@ function fetchCandidateAdvertismentSupportOF() {
                 parseSupporters(locRes.results);
             }
 
+// Sending data to supporters.js
+            displaySupporters(Candidate.supporters-card);
+
             apiReturns.push(true);
         })
         .catch(function (error) {
