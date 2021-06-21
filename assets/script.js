@@ -415,14 +415,14 @@ function fetchCandidateTravels() {
         .then(function (locRes) {
             console.log("ProPublica Trips", locRes);
             
-            if(locRes.num_results > 0) {
-                Candidate.travelCard.tripsCandidate = [];
-                Candidate.travelCard.tripsOther = [];
+            Candidate.travelCard.tripsCandidate = [];
+            Candidate.travelCard.tripsOther = [];
 
+            if(locRes.num_results > 0) {
                 parseTrips(locRes.results);
-//calls to generate travel card
-                fillTravelCard(Candidate.travelCard.tripsCandidate);
             }
+//calls to generate travel card
+            fillTravelCard(Candidate.travelCard.tripsCandidate);
 
             apiReturns.push(true);
         })
