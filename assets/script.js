@@ -51,7 +51,7 @@
                 return (this.totalRaised - this.independentContributions).toFixed(2);
             },
             grassRootsPercent: function() {
-                return ((this.independentContributions / this.totalRaised) * 100).toFixed(2);
+                return parseInt(((this.independentContributions / this.totalRaised) * 100).toFixed(2));
             },
             expenditure: "",
             currentStash: "",
@@ -110,6 +110,8 @@ function fetchCandidateTotalsOF() {
             Candidate.financeCard.expenditure = locRes.results[0].disbursements;
             Candidate.financeCard.independentContributions = locRes.results[0].individual_contributions;
             Candidate.financeCard.currentStash = locRes.results[0].last_cash_on_hand_end_period;
+
+            displayFinances(Candidate.financeCard);
 
             apiReturns.push(true);
         })
@@ -445,5 +447,10 @@ var display = setInterval(function() {
         console.log("The Candidate Supporters & Opposition:", Candidate.supportersCard);
         console.log("The Candidate Vote History:", Candidate.voteHistoryCard);
         console.log("The Candidate Trips:", Candidate.travelCard);
+
+        // This is needed to delay the collapsible method so it applies properly
+        setTimeout(function() {
+            $('.collapsible').collapsible();
+        }, 500);
     }
 }, 500);
