@@ -80,7 +80,7 @@
         }
     };
 
-// -----Temporary Variables-----
+// Search Bar Variables
     var districtOF;
     var districtPP;
     var state;
@@ -311,9 +311,13 @@ function fetchCandidatePersonalExplanationsPP() {
         .then(function (locRes) {
             console.log("ProPublica Personal Explanation", locRes);
 
+            Candidate.voteHistoryCard.explanations = [];
+
             if(locRes.num_results > 0) {
                 parsePersonalExplanations(locRes.results);
             }
+
+            writeVoterInfoCard();
             
             apiReturns.push(true);
         })
@@ -356,10 +360,14 @@ function fetchCandidateVotePositions() {
         })
         .then(function (locRes) {
             console.log("ProPublica Vote Positions", locRes);
+
+            Candidate.voteHistoryCard.votes = [];
             
             if(locRes.results[0].num_results > 0) {
                 parseVotePositions(locRes.results[0].votes);
             }
+
+            fetchCandidatePersonalExplanationsPP();
 
             apiReturns.push(true);
         })
@@ -443,7 +451,7 @@ function fetchCandidatePP() {
             Candidate.infoCard.lastName = locRes.results[0].last_name;
             Candidate.infoCard.middleInitial = locRes.results[0].middle_name;
 
-            fetchCandidatePersonalExplanationsPP();
+            
             fetchCandidateVotePositions();
             fetchCandidateTravels();
 

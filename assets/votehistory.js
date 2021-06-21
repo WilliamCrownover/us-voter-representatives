@@ -2,16 +2,22 @@ $(document).ready(function(){
     $('.collapsible').collapsible();
   });
 
-var displayVotes = setInterval(function() {
-        if(apiReturns.length >= 8) {
-            clearInterval(displayVotes);
-            writeVoterInfoCard();
-                // appendVotesData(); 
-                // appendExplanationsData(); 
-        }
-    }, 500);
+// var displayVotes = setInterval(function() {
+//         if(apiReturns.length >= 8) {
+//             clearInterval(displayVotes);
+//             writeVoterInfoCard();
+//                 // appendVotesData(); 
+//                 // appendExplanationsData(); 
+//         }
+//     }, 500);
 
 function appendVotesData() {
+    $("#vote-history-content").empty();
+    $("#vote-history-content").append(`
+        <li>
+            <div class="collapsible-header"><span style="font-weight:bold; color:#223E88"><h4>CANDIDATE VOTE HISTORY</h4></span>
+        </li>
+    `);
     for(i = 0; i < Candidate.voteHistoryCard.votes.length; i++) {
         $("#vote-history-content").append(`
             <li>
@@ -37,6 +43,12 @@ function appendVotesData() {
 }
 
 function appendExplanationsData() {
+    $("#missed-votes-content").empty();
+    $("#missed-votes-content").append(`
+        <li>
+            <div class="collapsible-header"><span style="font-weight:bold; color:#223E88"><h4>CANDIDATE MISSED VOTES</h4></span>
+        </li>
+`);
     for(i = 0; i < Candidate.voteHistoryCard.explanations.length; i++) {
         $("#missed-votes-content").append(`
         <ul class="collapsible" data-collapsible="accordion">
