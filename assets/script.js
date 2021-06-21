@@ -12,6 +12,7 @@
     var stateSelectEl = $("#stateSelect");
     var districtSelect = $("#districtSelect");
     var noDistrictText = $("#noDistrict");
+    var loadingTextEl = $("#loadingText");
 
 // Tracking Variables
     var apiReturns = [];
@@ -494,8 +495,20 @@ function handleSearchSubmit(event) {
 
     districtPP = districtSelect.val();
 
+    apiReturns = [];
+
     fetchCandidateOF();
     fetchCandidatePP();
+
+    loadingTextEl.removeClass("hidden");
+
+    var loading = setInterval(function() {
+        if(apiReturns.length === 8) {
+            loadingTextEl.addClass("hidden");
+            console.log("-----Loaded-----");
+            clearInterval(loading);
+        }
+    }, 500);
 }
 
 loadStateSelection();
