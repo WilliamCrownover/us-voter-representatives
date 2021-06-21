@@ -5,5 +5,5 @@ function displaySupporters(data){
         'https://wwww.electionsonline.com/rest/v1/elections/{electionID}/votergroups')
         
             
-    }
+    
 }
