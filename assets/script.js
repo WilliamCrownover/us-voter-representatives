@@ -9,8 +9,8 @@
 
 // Elements
     var repSearchFormEl = $("#repSearchForm");
-    var stateSelectEl = $("stateSelect");
-    var districtSelect = $("districtSelect");
+    var stateSelectEl = $("#stateSelect");
+    var districtSelect = $("#districtSelect");
 
 // Tracking Variables
     var apiReturns = [];
@@ -90,6 +90,22 @@
 
 // ----------------------------------------------------------------
 // FUNCTIONS
+
+function loadStateSelection() {
+    for(var i = 0; i < stateData.length; i++) {
+        stateSelectEl.append(`
+            <option value="${stateData[i].abrv}">${stateData[i].name}</option>
+        `);
+    }
+}
+
+function loadDistrictSelection() {
+    for(var i = 0; i < 53; i++) {
+        districtSelect.append(`
+            <option value="${String(i+1).padStart(2,"0")}">${i+1}</option>
+        `)
+    }
+}
 
 function fetchCandidateTotalsOF() {
     var locQueryUrl = `${urlOF}/candidate/${Candidate.idOF}/totals/?
@@ -432,8 +448,11 @@ function fetchCandidatePP() {
         });
 }
 
-fetchCandidateOF();
-fetchCandidatePP();
+loadStateSelection();
+loadDistrictSelection();
+
+// fetchCandidateOF();
+// fetchCandidatePP();
 
 // Using this to check the API responses and see that the Candidate object functions correctly
 var display = setInterval(function() {
