@@ -56,108 +56,103 @@
     </header>
 
     <main id="grid">
-        <div class="card" id="info-card">
-            <div class="card-content">
-                <img src="./assets/images/education_icon_142625.png" alt="info" width="100" height="100">
-                <p>Information Card</p>
-            </div>
-            <div class="table">
-                <div class="info-photo">
-                    <p>Photo</p>
+        <div class="row">
+            <div class="card col s4" id="info-card">
+                <div class="card-content">
+                    <img src="./assets/images/education_icon_142625.png" alt="info" width="100" height="100">
+                    <p>Information Card</p>
                 </div>
-                
-                <div class="expend-table">
-                    <output>Name</output>
-                    <output>Seat</output>
-                    <output>Party</output>
-                    <output>Contact Link</output>
+                <div class="table">
+                    <div class="info-photo">
+                        <p>Photo</p>
+                    </div>
+                    
+                    <div class="expend-table">
+                        <output>Name</output>
+                        <output>Seat</output>
+                        <output>Party</output>
+                        <output>Contact Link</output>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card col s4" id="finance-card">
+                <div class="card-content">
+                    <img src="./assets/images/flatten_the_curve_icon_142602.png" alt="info" width="100" height="100">
+                    <p>Finance Card</p>
+                </div>
+                <div class="expend-table" id="financeDataContainer">
+                </div>
+            </div>
+
+            <div class="card col s4" id="supporters-card">
+                <div class="card-content">
+                    <img src="./assets/images/thumbs_up_icon_142634.png" alt="info" width="100" height="100">
+                    <p>Supporters Card</p>
+                </div>
+                <div class="table">
+                    <div class="expend-table">
+                        <output>Committee</output>
+                        <output>Expenditure</output>
+                        <output>Support or Oppose</output>
+                    </div>
+    
+                    <div class="expend-table">
+                        <output>Committee</output>
+                        <output>Expenditure</output>
+                        <output>Support or Oppose</output>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="card"> 
-            <div class="card-content">
-                <img src="./assets/images/travel_icon_142598.png" alt="info" width="100" height="100">
-                <p>Travel Card</p>
-            </div>
-
-            <div class="table">
-                <div class="info-photo">
-                    <p>Map</p>
+        <div class="row">
+            <div class="card col s6" id="vote-history-card">
+                <div class="card-content">
+                    <img src="./assets/images/dialogue_icon_142637.png" alt="info" width="100" height="100">
+                    <p>Vote History Card</p> 
                 </div>
-                <br/>
-                <!-- <div class="expend-table">
-                    <output>Destination</output>
-                    <output>Sponsor</output>
-                </div> -->
+                <!-- <div class="expend-table" id="vote-history-content">  -->
+                <div class="cardWrapper" > 
+                    <div>
+                        <ul id="vote-history-content" class="collapsible" data-collapsible="accordion">
+                            <li>
+                                <div class="collapsible-header"><span style="font-weight:bold; color:#223E88"><h4>CANDIDATE VOTE HISTORY</h4></span></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul id="missed-votes-content" class="collapsible" data-collapsible="accordion">
+                            <li>
+                                <div class="collapsible-header"><span style="font-weight:bold; color:#223E88"><h4>CANDIDATE MISSED VOTES</h4></span></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div> 
             </div>
-            <div id="travel-card">
-                <!-- The appended trip data will go here now -->
-            </div>
-            <!--<div class="travel-info">
-                <p>Travel Information</p>
-                    <output class="destination-out">Destination</output>
-                    <output class="sponsor-out">Sponsor</output>
-            </div> -->
-        </div> 
 
 
-        <div class="card" id="finance-card">
-            <div class="card-content">
-                <img src="./assets/images/flatten_the_curve_icon_142602.png" alt="info" width="100" height="100">
-                <p>Finance Card</p>
-            </div>
-            <div class="expend-table" id="financeDataContainer">
-            </div>
-        </div>
-
-        <div class="card" id="vote-history-card">
-            <div class="card-content">
-                <img src="./assets/images/dialogue_icon_142637.png" alt="info" width="100" height="100">
-                <p>Vote History Card</p> 
-            </div>
-            <!-- <div class="expend-table" id="vote-history-content">  -->
-            <div class="cardWrapper" > 
-                <div>
-                    <ul id="vote-history-content" class="collapsible" data-collapsible="accordion">
-                        <li>
-                            <div class="collapsible-header"><span style="font-weight:bold; color:#223E88"><h4>CANDIDATE VOTE HISTORY</h4></span></div>
-                        </li>
-                    </ul>
+            <div class="card col s6"> 
+                <div class="card-content">
+                    <img src="./assets/images/travel_icon_142598.png" alt="info" width="100" height="100">
+                    <p>Travel Card</p>
                 </div>
-                <div>
-                    <ul id="missed-votes-content" class="collapsible" data-collapsible="accordion">
-                        <li>
-                            <div class="collapsible-header"><span style="font-weight:bold; color:#223E88"><h4>CANDIDATE MISSED VOTES</h4></span></div>
-                        </li>
-                    </ul>
+
+                <div class="table">
+                    <div class="info-photo">
+                        <p>Map</p>
+                    </div>
+                    <br/>
+                </div>
+                <div id="travel-card">
+                    <!-- The appended trip data will go here now -->
                 </div>
             </div> 
         </div>
 
 
-        <div class="card" id="supporters-card">
-            <div class="card-content">
-                <img src="./assets/images/thumbs_up_icon_142634.png" alt="info" width="100" height="100">
-                <p>Supporters Card</p>
-            </div>
-            <div class="table">
-                <div class="expend-table">
-                    <output>Committee</output>
-                    <output>Expenditure</output>
-                    <output>Support or Oppose</output>
-                </div>
 
-                <div class="expend-table">
-                    <output>Committee</output>
-                    <output>Expenditure</output>
-                    <output>Support or Oppose</output>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="card" id="bonus-card">
+        <!-- <div class="card" id="bonus-card">
             <div class="card-content">
                 <img src="./assets/images/care_icon_142694.png" alt="info" width="100" height="100">
                 <p>Feedback</p>
@@ -191,7 +186,7 @@
                     </div>
                 </form>
             </div>
-        </div> 
+        </div>  -->
     </main>
 
     <footer class="page-footer">
