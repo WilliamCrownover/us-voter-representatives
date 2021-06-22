@@ -25,10 +25,10 @@ $("#supporters-card").append(`
 <div class="collapsible-body">    
 
 <p><span style="font-weight:bold">Support:\u00A0</span>${Candidate.supportersCard.support[i].committeeName}</p>
-<p><span style="font-weight:bold">Oppose:\u00A0</span>${Candidate.supportersCard.oppose[i].committeeName}</p>
+<p><span style="font-weight:bold">Oppose:\u00A0</span>${Candidate.supportersCard.oppose[j].committeeName}</p>
 
 <p><span style="font-weight:bold">Total Spent:\u00A0</span>${Candidate.supportersCard.support[i].totalSpent}</p>
-<p><span style="font-weight:bold">Total Spent:\u00A0</span>${Candidate.supportersCard.oppose[i].totalSpent}</p>
+<p><span style="font-weight:bold">Total Spent:\u00A0</span>${Candidate.supportersCard.oppose[j].totalSpent}</p>
 </div>
 `);
 }
