@@ -18,40 +18,72 @@
         <div class="nav-wrapper">
             <img src="./assets/images/favicon.png" alt="logo" id="topFavicon"> 
             <a class="brand-logo">US Voter Representatives Lookup Tool</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <!-- <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="#!" link="">Home</a></li>
                 <li><a href="#!" link="">About</a></li>
                 <li><a href="#!" link="">Contact</a></li>
-            </ul>
+            </ul> -->
         </div>
     </nav>
 
-    <section>
-        <h5>Choose District</h5>
-        <form id="repSearchForm">
-            <select class="browser-default" id="stateSelect">
-                <option value="" disabled selected>State</option>
-                <!-- State search options will load here -->
-            </select>
-            <select class="browser-default" id="districtSelect">
-                <option value="" disabled selected>Number</option>
-                <!-- District number search options will load here -->
-            </select>
-            <button type="submit" class="btn">Search</button>
-            <h6 id="noDistrict" class="hidden">That district does not exist.<br>Please try lowering the number for that state.</h6>
-            <h6 id="loadingText" class="hidden">LOADING DATA...</h6>
-        </form>
-                
+    <div class="header-wrapper">
+        <section>
+            <!-- <div class="displayInline"> -->
+                <h5>Choose District</h5>
+                <form id="repSearchForm">
+                    <select class="browser-default" id="stateSelect">
+                        <option value="" disabled selected>State</option>
+                        <!-- State search options will load here -->
+                    </select>
+                    <select class="browser-default" id="districtSelect">
+                        <option value="" disabled selected>Number</option>
+                        <!-- District number search options will load here -->
+                    </select>
+                    <button type="submit" class="btn">Search</button>
+                    <h6 id="noDistrict" class="hidden">That district does not exist.<br>Please try lowering the number for that state.</h6>
+                    <h6 id="loadingText" class="hidden">LOADING DATA...</h6>
+                </form>
+            <!-- </div> -->
+        </section>
 
-        <ul class="listOne">
-            <li>Are you interested in voting but unsure where to start?</li>
-            <li>Feeling overwhelmed or pressured?</li>
-        </ul>
-        <ul class="listTwo">
-            <li>Well, we're here to help.</li>
-            <li>Use the search above to review candidate information.</li>
-        </ul>
-    </section>
+        <!-- Find your district section starts here  -->
+        <section class="sectionDistrict">
+            <h5>Find Your District</h5>
+            <ul >
+                <li>Not sure who your US Representative is?</li>
+                <li>Enter your street address and zip code below to find them.</li>
+            </ul>
+            <form id="usrAddressForm" class="col s12">
+                <div class="row">
+                    <div class="input-field addr-field col s5">
+                    <input  id="street_address" type="text" class="validate">
+                    <label style="color:white" for="street_address">Street Address</label>
+                    </div>
+
+                    <div class="input-field addr-field col s2">
+                    <input id="zip" type="text" class="validate">
+                    <label style="color:white" for="zip">Zip Code</label>
+                    </div>
+
+                    <input class="btn " type="submit" value="Find My District">
+                    <span id="districtOutput" style="font-size: 48px; font-weight:bold"></span>
+                </div>
+            </form>        
+        </section>
+        <!-- Find Your District section ends here  -->
+
+        <section>
+            <ul class="listOne">
+                <li>Are you interested in voting but unsure where to start?</li>
+                <li>Feeling overwhelmed or pressured?</li>
+            </ul>
+            <ul class="listTwo">
+                <li>Well, we're here to help.</li>
+                <li>Use the search above to review candidate information.</li>
+            </ul>
+        </section>
+    </div>
+    
 
     <main id="grid">
         
@@ -226,6 +258,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- State Data js -->
     <script src="./assets/stateData.js"></script>
+    <!-- Last Searched js -->
+    <script src="./assets/lastsearched.js"></script>
     <!-- Scripts js -->
     <script src="./assets/script.js"></script>
     <!-- Info Card js -->
@@ -238,5 +272,7 @@
     <script src="./assets/votehistory.js"></script>
     <!-- Travel Card js -->
     <script src="./assets/travel.js"></script>
+    <!-- Find My Rep js -->
+    <script src="./assets/findmyrep.js"></script>
 </body>
 </html>
