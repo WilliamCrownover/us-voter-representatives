@@ -7,6 +7,13 @@
     // ProPublica will be designated with "PP" in variable and function names
     var urlOF = "https://api.open.fec.gov/v1";
 
+// Elements
+    var repSearchFormEl = $("#repSearchForm");
+    var stateSelectEl = $("#stateSelect");
+    var districtSelect = $("#districtSelect");
+    var noDistrictText = $("#noDistrict");
+    var loadingTextEl = $("#loadingText");
+
 // Tracking Variables
     var apiReturns = [];
 
@@ -73,11 +80,12 @@
             tripsCandidate: [],
             tripsOther: []
         }
-    }
+    };
 
-// -----Temporary Variables-----
-    var district = 01;
-    var state = "WA"
+// Search Bar Variables
+    var districtOF;
+    var districtPP;
+    var state;
 
     //pls leave for now - used for testing vote history card
     // var district = 22;
@@ -85,6 +93,22 @@
 
 // ----------------------------------------------------------------
 // FUNCTIONS
+
+function loadStateSelection() {
+    for(var i = 0; i < stateData.length; i++) {
+        stateSelectEl.append(`
+            <option value="${stateData[i].abrv}">${stateData[i].name}</option>
+        `);
+    }
+}
+
+function loadDistrictSelection() {
+    for(var i = 0; i < 53; i++) {
+        districtSelect.append(`
+            <option value="${String(i+1).padStart(2,"0")}">${i+1}</option>
+        `)
+    }
+}
 
 function fetchCandidateTotalsOF() {
     var locQueryUrl = `${urlOF}/candidate/${Candidate.idOF}/totals/?
@@ -226,7 +250,7 @@ function fetchCandidateOF() {
         page=1&
         state=${state}&
         election_year=2020&
-        district=${district}&
+        district=${districtOF}&
         sort_null_only=false&
         api_key=${keyOpenFEC}&
         cycle=2022`
@@ -292,9 +316,13 @@ function fetchCandidatePersonalExplanationsPP() {
         .then(function (locRes) {
             console.log("ProPublica Personal Explanation", locRes);
 
+            Candidate.voteHistoryCard.explanations = [];
+
             if(locRes.num_results > 0) {
                 parsePersonalExplanations(locRes.results);
             }
+
+            writeVoterInfoCard();
             
             apiReturns.push(true);
         })
@@ -337,10 +365,14 @@ function fetchCandidateVotePositions() {
         })
         .then(function (locRes) {
             console.log("ProPublica Vote Positions", locRes);
+
+            Candidate.voteHistoryCard.votes = [];
             
             if(locRes.results[0].num_results > 0) {
                 parseVotePositions(locRes.results[0].votes);
             }
+
+            fetchCandidatePersonalExplanationsPP();
 
             apiReturns.push(true);
         })
@@ -386,11 +418,14 @@ function fetchCandidateTravels() {
         .then(function (locRes) {
             console.log("ProPublica Trips", locRes);
             
+            Candidate.travelCard.tripsCandidate = [];
+            Candidate.travelCard.tripsOther = [];
+
             if(locRes.num_results > 0) {
                 parseTrips(locRes.results);
-//calls to generate travel card
-                fillTravelCard(Candidate.travelCard.tripsCandidate);
             }
+//calls to generate travel card
+            fillTravelCard(Candidate.travelCard.tripsCandidate);
 
             apiReturns.push(true);
         })
@@ -400,7 +435,7 @@ function fetchCandidateTravels() {
 }
 
 function fetchCandidatePP() {
-    var locQueryUrl = `https://api.propublica.org/congress/v1/members/house/${state}/${district}/current.json`;
+    var locQueryUrl = `https://api.propublica.org/congress/v1/members/house/${state}/${districtPP}/current.json`;
 
     fetch(locQueryUrl, {
             headers: {
@@ -421,7 +456,7 @@ function fetchCandidatePP() {
             Candidate.infoCard.lastName = locRes.results[0].last_name;
             Candidate.infoCard.middleInitial = locRes.results[0].middle_name;
 
-            fetchCandidatePersonalExplanationsPP();
+            
             fetchCandidateVotePositions();
             fetchCandidateTravels();
 
@@ -432,24 +467,73 @@ function fetchCandidatePP() {
         });
 }
 
-fetchCandidateOF();
-fetchCandidatePP();
+function noDistrict() {
+    noDistrictText.removeClass("hidden");
+    var displayNoDistrictText = setTimeout(function() {
+        noDistrictText.addClass("hidden");
+    }, 3500);
+}
+
+function handleSearchSubmit(event) {
+    event.preventDefault();
+
+    state = stateSelectEl.val();
+    var tempDistrictNumber = parseInt(districtSelect.val());
+
+    for(var i = 0; i < stateData.length; i++) {
+        if(stateData[i].abrv === state) {
+            if(tempDistrictNumber > stateData[i].districtCount) {
+                console.log("No District");
+                noDistrict();
+                return
+            }
+        }
+    }
+    
+    if(oneDistrictStates.includes(state)) {
+        districtOF = "00";
+    } else {
+        districtOF = districtSelect.val();
+    }
+
+    districtPP = districtSelect.val();
+
+    apiReturns = [];
+
+    fetchCandidateOF();
+    fetchCandidatePP();
+
+    loadingTextEl.removeClass("hidden");
+
+    var loading = setInterval(function() {
+        if(apiReturns.length === 8) {
+            loadingTextEl.addClass("hidden");
+            console.log("-----Loaded-----");
+            clearInterval(loading);
+        }
+    }, 500);
+}
+
+loadStateSelection();
+loadDistrictSelection();
+
+repSearchFormEl.on("submit", handleSearchSubmit)
 
 // Using this to check the API responses and see that the Candidate object functions correctly
 var display = setInterval(function() {
     if(apiReturns.length === 8) {
         clearInterval(display);
-        console.log("The Candidate", Candidate);
-        console.log("The Candidate Photo:", Candidate.photo());
-        console.log("The Candidate Full Name:", Candidate.infoCard.fullName());
-        console.log("The Candidate Seat:", Candidate.infoCard.seat());
-        console.log("The Candidate Party:", Candidate.infoCard.party());
-        console.log("The Candidate Commitee Contributions:", Candidate.financeCard.nonIndependentContributions());
-        console.log("The Candidate Grassroots Percentage:", Candidate.financeCard.grassRootsPercent());
-        console.log("The Candidate Net Gain or Loss to Stash:", Candidate.financeCard.netGainLoss());
-        console.log("The Candidate Supporters & Opposition:", Candidate.supportersCard);
-        console.log("The Candidate Vote History:", Candidate.voteHistoryCard);
-        console.log("The Candidate Trips:", Candidate.travelCard);
+        // console.log("The Candidate", Candidate);
+        // console.log("The Candidate Photo:", Candidate.photo());
+        // console.log("The Candidate Full Name:", Candidate.infoCard.fullName());
+        // console.log("The Candidate Seat:", Candidate.infoCard.seat());
+        // console.log("The Candidate Party:", Candidate.infoCard.party());
+        // console.log("The Candidate Commitee Contributions:", Candidate.financeCard.nonIndependentContributions());
+        // console.log("The Candidate Grassroots Percentage:", Candidate.financeCard.grassRootsPercent());
+        // console.log("The Candidate Net Gain or Loss to Stash:", Candidate.financeCard.netGainLoss());
+        // console.log("The Candidate Supporters & Opposition:", Candidate.supportersCard);
+        // console.log("The Candidate Vote History:", Candidate.voteHistoryCard);
+        // console.log("The Candidate Trips:", Candidate.travelCard);
 
         // This is needed to delay the collapsible method so it applies properly
         setTimeout(function() {

@@ -16,7 +16,8 @@
 
     <nav>
         <div class="nav-wrapper">
-          <a class="brand-logo"><img src="./assets/images/favicon.png" alt="logo">US Voter Representatives Lookup Tool</a>
+            <img src="./assets/images/favicon.png" alt="logo" id="topFavicon"> 
+            <a class="brand-logo">US Voter Representatives Lookup Tool</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="#!" link="">Home</a></li>
                 <li><a href="#!" link="">About</a></li>
@@ -26,19 +27,21 @@
     </nav>
 
     <section>
-        <div>
-            <nav>
-                <div class="nav-wrapper">
-                  <form>
-                    <div class="input-field">
-                      <input id="search" type="search" required>
-                      <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                      <i class="material-icons">close</i>
-                    </div>
-                  </form>
-                </div>
-              </nav>
-        </div>
+        <h5>Choose District</h5>
+        <form id="repSearchForm">
+            <select class="browser-default" id="stateSelect">
+                <option value="" disabled selected>State</option>
+                <!-- State search options will load here -->
+            </select>
+            <select class="browser-default" id="districtSelect">
+                <option value="" disabled selected>Number</option>
+                <!-- District number search options will load here -->
+            </select>
+            <button type="submit" class="btn">Search</button>
+            <h6 id="noDistrict" class="hidden">That district does not exist.<br>Please try lowering the number for that state.</h6>
+            <h6 id="loadingText" class="hidden">LOADING DATA...</h6>
+        </form>
+                
 
         <ul class="listOne">
             <li>Are you interested in voting but unsure where to start?</li>
@@ -46,9 +49,8 @@
         </ul>
         <ul class="listTwo">
             <li>Well, we're here to help.</li>
-            <li>Use the searchbar below to review candidate information.</li>
+            <li>Use the search above to review candidate information.</li>
         </ul>
-        
     </section>
 
     <main id="grid">
@@ -71,7 +73,7 @@
             </div>
         </div>
 
-        <div class="card" id="travel-card"> 
+        <div class="card"> 
             <div class="card-content">
                 <img src="./assets/images/travel_icon_142598.png" alt="info" width="100" height="100">
                 <p>Travel Card</p>
@@ -86,6 +88,9 @@
                     <output>Destination</output>
                     <output>Sponsor</output>
                 </div> -->
+            </div>
+            <div id="travel-card">
+                <!-- The appended trip data will go here now -->
             </div>
             <!--<div class="travel-info">
                 <p>Travel Information</p>
@@ -220,6 +225,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- Materialize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- State Data js -->
+    <script src="./assets/stateData.js"></script>
     <!-- Scripts js -->
     <script src="./assets/script.js"></script>
     <!-- Info Card js -->
