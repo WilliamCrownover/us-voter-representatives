@@ -11,8 +11,6 @@ nav img{
     max-width: 40px;
 }
 
-
-
 #grid{
     width: 100vw;
     height: 100vh;
@@ -158,6 +156,10 @@ h5 {
     position: relative;
 }
 
+#usrAddressForm {
+    position: relative;
+}
+
 .btn {
     height: 45px;
     margin-bottom: 5px;
@@ -180,4 +182,8 @@ h6 {
 
 .hidden {
     display: none;
+}
+
+.displayInline {
+    display: inline-block;
 }

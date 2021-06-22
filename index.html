@@ -27,25 +27,41 @@
     </nav>
 
     <section>
-        <h5>Choose District</h5>
-        <form id="repSearchForm">
-            <select class="browser-default" id="stateSelect">
-                <option value="" disabled selected>State</option>
-                <!-- State search options will load here -->
-            </select>
-            <select class="browser-default" id="districtSelect">
-                <option value="" disabled selected>Number</option>
-                <!-- District number search options will load here -->
-            </select>
-            <button type="submit" class="btn">Search</button>
-            <h6 id="noDistrict" class="hidden">That district does not exist.<br>Please try lowering the number for that state.</h6>
-            <h6 id="loadingText" class="hidden">LOADING DATA...</h6>
-        </form>
-             
-        <h5>Find My District Number</h5>
-        <form id="usrAddress">
-            
-        </form>
+        <div class="displayInline">
+            <h5>Choose District</h5>
+            <form id="repSearchForm">
+                <select class="browser-default" id="stateSelect">
+                    <option value="" disabled selected>State</option>
+                    <!-- State search options will load here -->
+                </select>
+                <select class="browser-default" id="districtSelect">
+                    <option value="" disabled selected>Number</option>
+                    <!-- District number search options will load here -->
+                </select>
+                <button type="submit" class="btn">Search</button>
+                <h6 id="noDistrict" class="hidden">That district does not exist.<br>Please try lowering the number for that state.</h6>
+                <h6 id="loadingText" class="hidden">LOADING DATA...</h6>
+            </form>
+        </div>
+    
+        <div class="displayInline">
+            <h5>Find My District Number</h5>
+            <form id="usrAddressForm">
+                <div class="input-field">
+                    <input  id="street_address" type="text" class="validate">
+                    <label style="color:white" for="street_address">Street Address</label>
+                </div>
+                    
+                <div class="input-field">
+                    <input id="zip" type="text" class="validate">
+                    <label style="color:white" for="zip">Zip Code</label>
+                </div>
+
+                    <input class="btn" type="submit" value="Find My Rep">
+                    <!-- <ul id="districtOutput"></ul> -->
+
+            </form>
+        </div>
 
         <ul class="listOne">
             <li>Are you interested in voting but unsure where to start?</li>
