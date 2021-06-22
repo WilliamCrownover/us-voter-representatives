@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
     <!-- Local css file -->
     <link rel="stylesheet" href="./assets/styles.css">
-    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" type="image/png" href="./assets/images/favicon.png">
     <title>US Voter Representatives</title>
 </head>
-<body>
-   
+<body>   
 
     <nav>
         <div class="nav-wrapper">
-          <a class="brand-logo"><img src="favicon.png" alt="logo">US Voter Representatives Lookup Tool</a>
+          <a class="brand-logo"><img src="./assets/images/favicon.png" alt="logo">US Voter Representatives Lookup Tool</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="#!" link="">Home</a></li>
                 <li><a href="#!" link="">About</a></li>
@@ -54,7 +54,7 @@
     <main id="grid">
         <div class="card" id="info-card">
             <div class="card-content">
-                <img src="education_icon_142625.png" alt="info" width="100" height="100">
+                <img src="./assets/images/education_icon_142625.png" alt="info" width="100" height="100">
                 <p>Information Card</p>
             </div>
             <div class="table">
@@ -71,9 +71,9 @@
             </div>
         </div>
 
-        <div class="card" id="travel-card">
+        <div class="card" id="travel-card"> 
             <div class="card-content">
-                <img src="travel_icon_142598.png" alt="info" width="100" height="100">
+                <img src="./assets/images/travel_icon_142598.png" alt="info" width="100" height="100">
                 <p>Travel Card</p>
             </div>
 
@@ -81,78 +81,57 @@
                 <div class="info-photo">
                     <p>Map</p>
                 </div>
-                <div class="expend-table">
+                <br/>
+                <!-- <div class="expend-table">
                     <output>Destination</output>
                     <output>Sponsor</output>
-                </div>
+                </div> -->
             </div>
             <!--<div class="travel-info">
                 <p>Travel Information</p>
                     <output class="destination-out">Destination</output>
                     <output class="sponsor-out">Sponsor</output>
-            </div>
-            
-           <div class="travel-info">
-                <p>Travel Information</p>
-                    <output class="destination-out">Destination</output>
-                    <output class="sponsor-out">Sponsor</output>
-            </div>-->
+            </div> -->
         </div> 
 
 
         <div class="card" id="finance-card">
             <div class="card-content">
-                <img src="flatten_the_curve_icon_142602.png" alt="info" width="100" height="100">
+                <img src="./assets/images/flatten_the_curve_icon_142602.png" alt="info" width="100" height="100">
             <p>Finance Card</p>
             </div>
-            <div class="table">
-
-                <div class="finance-ratio">
-                    <p>Ratio Chart</p>
-                </div>
-
-                <div class="finance-table">
-                    <output>Total Raised</output>
-                    <output>Comittee</output>
-                    <output>Independent</output>
-                    <output>Expenditure</output>
-                    <output>Current Stash</output>
-                </div>
-
+            <div class="expend-table" id="financeDataContainer">
             </div>
         </div>
 
-
         <div class="card" id="vote-history-card">
             <div class="card-content">
-                <img src="dialogue_icon_142637.png" alt="info" width="100" height="100">
-            <p>Vote History Card</p>
+                <img src="./assets/images/dialogue_icon_142637.png" alt="info" width="100" height="100">
+            <p>Vote History Card</p> 
             </div>
-
-            <div class="expend-table">
-                <output>Category</output>
-                <output>Reason</output>
-                <output>Category</output>
-                <output>Reason</output>
-            </div>
-            <!--<div class="vote-info">
-                <p>The Great Excuse</p>
-                    <output class="category-out">Category</output>
-                    <output class="text-out">Reason</output>
-            </div>
-            
-            <div class="vote-info">
-                <p>The Great Excuse</p>
-                    <output class="category-out">Category</output>
-                    <output class="text-out">Reason</output>
-            </div>-->
-
+            <!-- <div class="expend-table" id="vote-history-content">  -->
+            <div class="cardWrapper" > 
+                <div>
+                    <ul id="vote-history-content" class="collapsible" data-collapsible="accordion">
+                        <li>
+                        <div class="collapsible-header"><span style="font-weight:bold; color:#223E88"><h4>CANDIDATE VOTE HISTORY</h4></span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul id="missed-votes-content" class="collapsible" data-collapsible="accordion">
+                        <li>
+                        <div class="collapsible-header"><span style="font-weight:bold; color:#223E88"><h4>CANDIDATE MISSED VOTES</h4></span>
+                        </li>
+                    </ul>
+                </div>
+            </div> 
         </div>
 
 
         <div class="card" id="supporters-card">
             <div class="card-content">
-                <img src="thumbs_up_icon_142634.png" alt="info" width="100" height="100">
+                <img src="./assets/images/thumbs_up_icon_142634.png" alt="info" width="100" height="100">
                 <p>Supporters Card</p>
             </div>
                 <div class="table">
@@ -173,7 +152,7 @@
 
         <div class="card" id="feedback-card">
             <div class="card-content">
-                <img src="care_icon_142694.png" alt="info" width="100" height="100">
+                <img src="./assets/images/care_icon_142694.png" alt="info" width="100" height="100">
                 <p>Feedback</p>
             </div>
 
@@ -210,8 +189,6 @@
     </div> 
 
     </main>
-
-
     <footer class="page-footer">
         <div class="container">
         <div class="row">
@@ -234,21 +211,26 @@
         </div>
         <div class="footer-copyright">
         <div class="container">
-        © 2020 Copyright Text
+        © 2021 Copyright Text
         </div>
         </div>
     </footer>
-
-
-
-
     
-    <script src="./assets/script.js"></script>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- Materialize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!-- Local js -->
+    <!-- Scripts js -->
     <script src="./assets/script.js"></script>
+    <!-- Info Card js -->
+    <script src="./assets/info.js"></script>
+    <!-- Finance Card js -->
+    <script src="./assets/finance.js"></script>
+    <!-- Supporters Card js -->
+    <script src="./assets/supporters.js"></script>
+    <!-- Vote History Card js -->
+    <script src="./assets/votehistory.js"></script>
+    <!-- Travel Card js -->
+    <script src="./assets/travel.js"></script>
 </body>
 </html>
