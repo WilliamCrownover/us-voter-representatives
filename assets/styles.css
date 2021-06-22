@@ -108,6 +108,18 @@ section li{
     margin: 0;
 }
 
+#addressSearchBar {
+    justify-content: start;
+}
+
+#addressSearchBar div {
+    margin-right: 20px;
+}
+
+#street_address {
+    width: 250px;
+}
+
 .row::after {
     content: none;
 }
@@ -187,6 +199,10 @@ h5 {
     background-color: #40b5e0;
 }
 
+input.btn {
+    margin-top: 15px;
+}
+
 h6 {
     box-sizing: border-box;
     color: white;
@@ -202,8 +218,9 @@ h6 {
 }
 
 #districtOutput {
-    margin-right: 800px;
+    /* margin-right: 800px; */
     /* margin-bottom: 500px; */
+    margin-left: 20px;
     margin-top: 2px;
     font-size: 36px;
 }

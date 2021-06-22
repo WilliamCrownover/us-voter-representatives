@@ -54,19 +54,19 @@
                 <li>Not sure who your US Representative is?</li>
                 <li>Enter your street address and zip code below to find them.</li>
             </ul>
-            <form id="usrAddressForm" class="col s12">
-                <div class="row">
-                    <div class="input-field addr-field col s5">
+            <form id="usrAddressForm">
+                <div class="row" id="addressSearchBar">
+                    <div class="input-field addr-field">
                     <input  id="street_address" type="text" class="validate">
                     <label style="color:white" for="street_address">Street Address</label>
                     </div>
 
-                    <div class="input-field addr-field col s2">
+                    <div class="input-field addr-field">
                     <input id="zip" type="text" class="validate">
                     <label style="color:white" for="zip">Zip Code</label>
                     </div>
 
-                    <input class="btn " type="submit" value="Find My District">
+                    <input class="btn" type="submit" value="Find My District">
                     <span id="districtOutput" style="font-size: 48px; font-weight:bold"></span>
                 </div>
             </form>        
