@@ -15,7 +15,7 @@ for( var i = 0; i < Candidate.supportersCard.support.length; i++) {
 
     }
      else {
-        (Candidate.supportersCard.oppose[j].committeeName.totalSpent == 0.00)
+        (Candidate.supportersCard.oppose[j].committeeName.totalSpent == 0.00);
 
         }     
 }
