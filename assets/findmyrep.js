@@ -16,6 +16,7 @@ $("#usrAddressForm").submit(function(event) {
     var zippy = $("#zip").val();
     parsedAddress = addr + ", " +zippy;
     getData(parsedAddress);
+    writeDistrict();
   });
 
 //Use Google Civics API to find user district number from address data
@@ -45,17 +46,22 @@ function getData(address) {
         myString = keysArr[foundAt];
         //get district by splitting resulting string at 'cd:'
         district = myString.split("/cd:")[1];
-        console.log(district);
+        console.log(district); 
       });
 }
+function writeDistrict(){
+  var readyToGo = setInterval(function() {
+    if(keysArr.length > 3) {
+      clearInterval(readyToGo);
+      // $("#districtOutput").empty(); 
+      $("#districtOutput").html(`<li style="list-style-type: none;">Your District Number is:
+      <span style="font-size: 48px; font-weight:bold">${district}</span></li>`);
+      // district = 0; 
+    }
+  }, 1000)
+}
+
+writeDistrict();
 
 //output district result to page
-var readyToGo = setInterval(function() {
-  if(keysArr.length > 3) {
-    clearInterval(readyToGo);
-    // $("#districtOutput").empty(); 
-    $("#districtOutput").append(`<li style="list-style-type: none;">Your District Number is:
-    <span style="font-size: 48px; font-weight:bold">${district}</span></li>`);
-    district = 0;
-  }
-})
+
