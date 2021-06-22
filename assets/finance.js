@@ -9,6 +9,7 @@ var formatter = new Intl.NumberFormat('en-US', {
 });
 
 function displayFinances(data) {
+    financeDataContainerEl.empty();
     financeDataContainerEl.append(`
         <ul class="collapsible" data-collapsible="accordion">
             <li>
@@ -36,6 +37,8 @@ function displayFinances(data) {
             </li>
         </ul>
     `)
+
+    $('.collapsible').collapsible();
 }
 
 // var displayFinanceData = setInterval(function() {
