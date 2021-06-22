@@ -1,16 +1,7 @@
-$(document).ready(function(){
-    $('.collapsible').collapsible();
-  });
+//Global variables
+var voteTitle = "";
 
-// var displayVotes = setInterval(function() {
-//         if(apiReturns.length >= 8) {
-//             clearInterval(displayVotes);
-//             writeVoterInfoCard();
-//                 // appendVotesData(); 
-//                 // appendExplanationsData(); 
-//         }
-//     }, 500);
-
+//Clear section & add header for Vote History section
 function appendVotesData() {
     $("#vote-history-content").empty();
     $("#vote-history-content").append(`
@@ -19,17 +10,17 @@ function appendVotesData() {
         </li>
     `);
 
-    var voteTitle = "";
-
+    //write candidate Vote History to page
     for(i = 0; i < Candidate.voteHistoryCard.votes.length; i++) {
-
+        //address data entries without title
         if(Candidate.voteHistoryCard.votes[i].title == "") {
         voteTitle = "Vote action has data, but no title.";
         }
         else {
+        //Generate static title section first
         var voteTitle = Candidate.voteHistoryCard.votes[i].title;
         }
-
+        //write remaining data to accordion section, expands on title click
         $("#vote-history-content").append(`
             <li>
                 <div class="collapsible-header" style="font-weight:bold"><span style="font-weight:bold">Title:\u00A0${voteTitle}</span></div>
@@ -52,6 +43,7 @@ function appendVotesData() {
     }
 }
 
+//Clear section & add header for Missed Votes section
 function appendExplanationsData() {
     $("#missed-votes-content").empty();
     $("#missed-votes-content").append(`
@@ -60,6 +52,7 @@ function appendExplanationsData() {
         </li>
     `);
     
+    //If no missed votes data exists, write message to user
     if(!Candidate.voteHistoryCard.explanations.length) {
         $("#missed-votes-content").append(`
         <ul class="collapsible" data-collapsible="accordion">
@@ -70,6 +63,7 @@ function appendExplanationsData() {
         `)
     }
     else {
+        //otherwise write Missed Votes data to screen by date
         for(i = 0; i < Candidate.voteHistoryCard.explanations.length; i++) {
             $("#missed-votes-content").append(`
             <ul class="collapsible" data-collapsible="accordion">
@@ -86,7 +80,7 @@ function appendExplanationsData() {
     }
 }
 
-
+//call functions to write vote history & missed votes sections to page. Add collapsible method after data is written to page.
 function writeVoterInfoCard() {
     appendVotesData(); 
     appendExplanationsData(); 
