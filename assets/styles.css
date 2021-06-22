@@ -1,3 +1,7 @@
+*{
+    font-family:serif;
+   
+}
 
 nav {
     background-color:  #223E88!important;
@@ -18,7 +22,7 @@ nav img{
 
 #grid{
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
 
     display: grid;
     grid-template: 1fr 1fr  / 1fr 1fr 1fr;
@@ -92,6 +96,7 @@ section li{
 
 .card{
     margin: 6px 0px 6px !important;
+    background-color: ivory;
 }
 
 .card-content p{
@@ -127,10 +132,12 @@ section li{
     padding:10px;
 }
 
+
 .cardWrapper {
     padding: 5px;
     margin-left: 5px;
 }
+
 
 .browser-default {
     width: 20%;
