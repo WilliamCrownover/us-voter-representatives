@@ -5,14 +5,18 @@ function displaySupporters(data) {
     <div class="collapsible-header"><span style= "font-weight:bold; color:#223E88"><h4>supportersCard</h4></span>
 `);
 
-for(i = 0; i < Candidate.supportersCard.support.length; i++) {
+for( var i = 0; i < Candidate.supportersCard.support.length; i++) {
+ for(var j = 0; j < Candidate.supportersCard.oppose.length; j++) {
 
-//  //   if(Candidate.supportersCard.support[i].committeeName == "") {
 
-//     }
-//     else {
-//         (Candidate.supportersCard.oppose[i].committeeName == "")
-//     }
+   if(Candidate.supportersCard.support[i].committeeName == "") {
+
+    }
+     else {
+         (Candidate.supportersCard.oppose[j].committeeName == "")
+
+        }     
+}
 
 
 $("#supporters-card").append(`
