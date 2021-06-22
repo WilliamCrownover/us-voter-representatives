@@ -82,7 +82,10 @@
             tripsCandidate: [],
             tripsOther: []
         }
+<<<<<<< HEAD
        
+=======
+>>>>>>> a3de2359abe44070f44c198cb8d7d69e97546867
     };
 
 // Search Bar Variables
