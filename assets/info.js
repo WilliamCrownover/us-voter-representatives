@@ -2,8 +2,7 @@
 var infoCardDataId= $("#infoCardDataContainer");
 
 
-
- function fullName(data) {  
+ function displayInfoCard(data) {  
 
     infoCardDataId.empty();
       infoCardDataId.append(`
@@ -16,20 +15,23 @@ var infoCardDataId= $("#infoCardDataContainer");
 
                 <div class="table" class="collapsible" data-collapsible="accordion">
                     
-                    <div class="expend-table" id=infoCardDataContainer class="collapsible" data-collapsible="accordion">
-                         <output>Name:${data.fullName()}</output>
-                         <output>Seat:${data.seat()}</output>
-                         <output>Party:${data.party()}</output>
+                    <div class="expend-table" id=infoCardDataContainer class="collapsible-body">
+                         <output>Name:${Candidate.infoCard.fullName()}</output>
+                         <output>Seat:${Candidate.infoCard.seat()}</output>
+                         <output>Party:${Candidate.infoCard.party()}</output>
                     </div>
                 </div>
             </div>
             `)
 
-     $('.collapsible').collapsible();  
+     $("#infoCardDataContainer > .collapsible").collapsible();  
 
     
  }
 
+  // displayInfoCard(Candidate.infoCard.fullName());
+    // displayInfoCard(Candidate.infoCard.seat());
+     //displayInfoCard(Candidate.infoCard.party());
  
-
+    displayInfoCard(Candidate.infoCard.fullName);
 
