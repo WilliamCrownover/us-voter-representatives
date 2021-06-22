@@ -87,10 +87,6 @@
     var districtPP;
     var state;
 
-    //pls leave for now - used for testing vote history card
-    // var district = 22;
-    // var state = "CA"
-
 // ----------------------------------------------------------------
 // FUNCTIONS
 
@@ -475,6 +471,7 @@ function handleSearchSubmit(event) {
     event.preventDefault();
 
     state = stateSelectEl.val();
+    lastSearched.state = state;
     var tempDistrictNumber = parseInt(districtSelect.val());
 
     for(var i = 0; i < stateData.length; i++) {
@@ -494,6 +491,7 @@ function handleSearchSubmit(event) {
     }
 
     districtPP = districtSelect.val();
+    lastSearched.district = districtPP;
 
     apiReturns = [];
 
@@ -501,6 +499,8 @@ function handleSearchSubmit(event) {
     fetchCandidatePP();
 
     loadingTextEl.removeClass("hidden");
+
+    setLastSearched();
 
     var loading = setInterval(function() {
         if(apiReturns.length === 8) {
