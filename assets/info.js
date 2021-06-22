@@ -1,32 +1,35 @@
-function displayInfoCard (infoCard) {
 
-var infoCard$ = $('#info-card')
-
+var infoCardDataId= $("#infoCardDataContainer");
 
 
 
+ function displayInfoCard() {  
 
+    infoCardDataId.empty();
+      infoCardDataId.append(`
+      <div class="card" id="info-card" class="collapsible" data-collapsible="accordion">
 
-
-
-let info =  ('<div class="card" id="info-card">
-            <div class="card-content">
-                <img src="./assets/images/education_icon_142625.png" alt="info" width="100" height="100">
-                <p>Information Card</p>
-            </div>
-            
-            <div class="table">
-                <div class="info-photo">
-                    <p>Photo</p>
+                <div class="card-content" class="collapsible" data-collapsible="accordion">
+                    <img src="./assets/images/education_icon_142625.png" alt="info" width="100" height="100">
+                    <p>Information Card</p>
                 </div>
-                
-                <div class="expend-table">
-                    <output>Name</output>
-                    <output>Seat</output>
-                    <output>Party</output>
-                    <output>Contact Link</output>
+
+                <div class="table" class="collapsible" data-collapsible="accordion">
+                    
+                    <div class="expend-table" id=infoCardDataContainer class="collapsible" data-collapsible="accordion">
+                         <output>Name:${data.fullName()}</output>
+                        <output>Seat:${data.seat()}</output>
+                        <output>Party:${data.party()}</output>
+                    </div>
                 </div>
             </div>
-        </div>')
+            `)
 
-}
+     $('.collapsible').collapsible();  
+
+    
+ }
+
+
+
+displayInfoCard(infoCard)

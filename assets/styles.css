@@ -62,7 +62,7 @@ section{
     background-color:  #0168AD;;
     width: 100%;
     height: 200px;
-    padding: 30px 30px;
+    padding: 10px 30px;
     margin: 10px 0px 10px;
 }
 section div{
@@ -137,4 +137,58 @@ section li{
     padding: 5px;
     margin-left: 5px;
 }
+<<<<<<< HEAD
 >>>>>>> b3eedd5d15cea8bf8a2633e5af876e756f76b48f
+=======
+
+.browser-default {
+    width: 20%;
+}
+
+#districtSelect {
+    width: 90px
+}
+
+select.browser-default {
+    display: inline-block;
+    margin-right: 10px;
+    width: 140px;
+}
+
+h5 {
+    color: white;
+}
+
+#topFavicon {
+    margin: 15px;
+    margin-top: 12px;
+}
+
+#repSearchForm {
+    position: relative;
+}
+
+.btn {
+    height: 45px;
+    margin-bottom: 5px;
+    background-color: #223E88;
+}
+
+.btn:hover {
+    background-color: #40b5e0;
+}
+
+h6 {
+    box-sizing: border-box;
+    color: white;
+    display: inline-block;
+    margin: 0;
+    margin-left: 15px;
+    margin-top: 2px;
+    position: absolute;
+}
+
+.hidden {
+    display: none;
+}
+>>>>>>> a3de2359abe44070f44c198cb8d7d69e97546867
