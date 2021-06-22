@@ -7,13 +7,13 @@ function displaySupporters(data) {
 
 for(i = 0; i < Candidate.supportersCard.support.length; i++) {
 
-    if(Candidate.supportersCard.support[i].committeeName == "") {
+//  //   if(Candidate.supportersCard.support[i].committeeName == "") {
 
-    }
-    else {
-        (Candidate.supportersCard.oppose[i].committeeName == "")
-    }
-}
+//     }
+//     else {
+//         (Candidate.supportersCard.oppose[i].committeeName == "")
+//     }
+
 
 $("#supporters-card").append(`
 
@@ -27,4 +27,5 @@ $("#supporters-card").append(`
 <p><span style="font-weight:bold">Total Spent:\u00A0</span>${Candidate.supportersCard.oppose[i].totalSpent}</p>
 </div>
 `);
+}
 }
