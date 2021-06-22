@@ -5,15 +5,17 @@ function displaySupporters(data) {
     <div class="collapsible-header"><span style= "font-weight:bold; color:#223E88"><h4>supportersCard</h4></span>
 `);
 
+var totalSpent = 0.00;
+
 for( var i = 0; i < Candidate.supportersCard.support.length; i++) {
  for(var j = 0; j < Candidate.supportersCard.oppose.length; j++) {
 
 
-   if(Candidate.supportersCard.support[i].committeeName == "") {
+   if(Candidate.supportersCard.support[i].committeeName.totalSpent == 0.00) {
 
     }
      else {
-         (Candidate.supportersCard.oppose[j].committeeName == "")
+        (Candidate.supportersCard.oppose[j].committeeName.totalSpent == 0.00)
 
         }     
 }
