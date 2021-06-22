@@ -195,7 +195,7 @@ function fetchCandidateAdvertismentSupportOF() {
             }
 
 // Sending data to supporters.js
-            displaySupporters(Candidate.supporters-card);
+            displaySupporters(Candidate.supportersCard);
 
             apiReturns.push(true);
         })
@@ -523,7 +523,7 @@ repSearchFormEl.on("submit", handleSearchSubmit)
 var display = setInterval(function() {
     if(apiReturns.length === 8) {
         clearInterval(display);
-        // console.log("The Candidate", Candidate);
+         console.log("The Candidate", Candidate);
         // console.log("The Candidate Photo:", Candidate.photo());
         // console.log("The Candidate Full Name:", Candidate.infoCard.fullName());
         // console.log("The Candidate Seat:", Candidate.infoCard.seat());
