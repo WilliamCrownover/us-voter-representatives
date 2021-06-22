@@ -507,6 +507,7 @@ function handleSearchSubmit(event) {
     var loading = setInterval(function() {
         if(apiReturns.length === 8) {
             loadingTextEl.addClass("hidden");
+            displayInfoCard();
             console.log("-----Loaded-----");
             clearInterval(loading);
         }

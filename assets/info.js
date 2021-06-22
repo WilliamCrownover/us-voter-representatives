@@ -2,7 +2,7 @@
 var infoCardDataId= $("#infoCardDataContainer");
 
 
- function fetchCandidatePP(data) {  
+ function displayInfoCard(data) {  
 
     
 
