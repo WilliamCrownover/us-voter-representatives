@@ -15,7 +15,7 @@ function appendVotesData() {
     $("#vote-history-content").empty();
     $("#vote-history-content").append(`
         <li>
-            <div class="collapsible-header"><span style="font-weight:bold; color:#223E88"><h4>CANDIDATE VOTE HISTORY</h4></span>
+            <div class="collapsible-header"><span style="font-weight:bold; color:#223E88"><h4>CANDIDATE VOTE HISTORY</h4></span></div>
         </li>
     `);
 
@@ -56,7 +56,7 @@ function appendExplanationsData() {
     $("#missed-votes-content").empty();
     $("#missed-votes-content").append(`
         <li>
-            <div class="collapsible-header"><span style="font-weight:bold; color:#223E88"><h4>CANDIDATE MISSED VOTES</h4></span>
+            <div class="collapsible-header"><span style="font-weight:bold; color:#223E88"><h4>CANDIDATE MISSED VOTES</h4></span></div>
         </li>
     `);
     

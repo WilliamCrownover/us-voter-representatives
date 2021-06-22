@@ -237,6 +237,50 @@ function fetchCandidateSupportOF() {
         });
 }
 
+function fetchCandidateAltMethodOF() {
+    var locQueryUrl = `${urlOF}/candidates/?
+        api_key=${keyOpenFEC}&
+        page=1&
+        office=H&
+        sort_null_only=false&
+        sort_nulls_last=false&
+        sort_hide_null=false&
+        incumbent_challenge=I&
+        sort=name&cycle=2020&
+        district=${districtOF}&
+        candidate_status=F&
+        state=${state}`
+        .replace(/\s/g, '');
+
+    fetch(locQueryUrl)
+        .then(function (response) {
+            if(!response.ok) {
+                throw response.json();
+            }
+            return response.json();
+        })
+        .then(function (locRes) {
+            console.log("openFEC @@@@@ Second Try Candidate Search", locRes);
+
+            if(locRes.results.length === 0) {
+                console.log("STILL FAILED!");
+            }
+            
+            Candidate.idOF = locRes.results[0].candidate_id;
+            Candidate.infoCard.district = locRes.results[0].district_number;
+            Candidate.infoCard.partyShort = locRes.results[0].party;
+            Candidate.infoCard.state = locRes.results[0].state;
+
+            fetchCandidateTotalsOF();
+            fetchCandidateSupportOF();
+
+            apiReturns.push(true);
+        })
+        .catch(function (error) {
+            return error;
+        });
+}
+
 function fetchCandidateOF() {
     var locQueryUrl = `${urlOF}/candidates/search/?
         incumbent_challenge=I&
@@ -262,6 +306,11 @@ function fetchCandidateOF() {
         })
         .then(function (locRes) {
             console.log("openFEC Candidate Search", locRes);
+
+            if(locRes.results.length === 0) {
+                fetchCandidateAltMethodOF();
+                return
+            }
             
             Candidate.idOF = locRes.results[0].candidate_id;
             Candidate.infoCard.district = locRes.results[0].district_number;
