@@ -3,7 +3,7 @@ var infoCardDataId= $("#infoCardDataContainer");
 
 
 
- function displayInfoCard() {  
+ function fullName(data) {  
 
     infoCardDataId.empty();
       infoCardDataId.append(`
@@ -18,8 +18,8 @@ var infoCardDataId= $("#infoCardDataContainer");
                     
                     <div class="expend-table" id=infoCardDataContainer class="collapsible" data-collapsible="accordion">
                          <output>Name:${data.fullName()}</output>
-                        <output>Seat:${data.seat()}</output>
-                        <output>Party:${data.party()}</output>
+                         <output>Seat:${data.seat()}</output>
+                         <output>Party:${data.party()}</output>
                     </div>
                 </div>
             </div>
@@ -30,6 +30,6 @@ var infoCardDataId= $("#infoCardDataContainer");
     
  }
 
+ 
 
 
-displayInfoCard(infoCard)

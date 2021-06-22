@@ -50,6 +50,8 @@
                     return "Third-party or Independent"
                 }
             }
+
+            
         },
         financeCard: {
             totalRaised: "",
@@ -80,6 +82,7 @@
             tripsCandidate: [],
             tripsOther: []
         }
+       
     };
 
 // Search Bar Variables
