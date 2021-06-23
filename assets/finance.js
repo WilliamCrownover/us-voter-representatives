@@ -40,10 +40,3 @@ function displayFinances(data) {
 
     $('.collapsible').collapsible();
 }
-
-// var displayFinanceData = setInterval(function() {
-//     if(apiReturns.length === 8) {
-//         clearInterval(displayFinanceData);
-//         displayFinances(Candidate.financeCard);
-//     }
-// }, 500);
