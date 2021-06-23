@@ -24,7 +24,7 @@ var infoCardDataId= $("#infoCardDataContainer");
      $("#infoCardDataContainer > .collapsible").collapsible();  
 
 
-     console.log(Candidate.infoCard.firstName)
+    //  console.log(Candidate.infoCard.firstName)
  }
 
      // displayInfoCard(Candidate.infoCard.fullName());
