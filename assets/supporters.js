@@ -66,4 +66,6 @@ function displaySupporters(data) {
     $("#oppose-header").append(`
 <li><span style= "font-weight: bold">Total Oppose Expense</span> ${formatter.format(Candidate.supportersCard.totalOpposeExpense)}</li>
 `);
+
+    $('.collapsible').collapsible();
 }
