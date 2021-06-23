@@ -190,6 +190,9 @@ function fetchCandidateAdvertismentSupportOF() {
                 parseSupporters(locRes.results);
             }
 
+// Sending data to supporters.js
+            displaySupporters(Candidate.supportersCard);
+
             apiReturns.push(true);
         })
         .catch(function (error) {
@@ -219,6 +222,11 @@ function fetchCandidateSupportOF() {
         })
         .then(function (locRes) {
             console.log("openFEC Candidate Support Schedule_e", locRes);
+
+            Candidate.supportersCard.totalSupportExpense = 0;
+            Candidate.supportersCard.totalOpposeExpense = 0;
+            Candidate.supportersCard.support = [];
+            Candidate.supportersCard.oppose = [];
             
             if(locRes.pagination.count > 0) {
                 parseSupporters(locRes.results);
@@ -569,7 +577,7 @@ repSearchFormEl.on("submit", handleSearchSubmit)
 var display = setInterval(function() {
     if(apiReturns.length === 8) {
         clearInterval(display);
-        // console.log("The Candidate", Candidate);
+         console.log("The Candidate", Candidate);
         // console.log("The Candidate Photo:", Candidate.photo());
         // console.log("The Candidate Full Name:", Candidate.infoCard.fullName());
         // console.log("The Candidate Seat:", Candidate.infoCard.seat());
