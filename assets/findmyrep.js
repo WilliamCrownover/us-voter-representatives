@@ -21,8 +21,10 @@ $("#usrAddressForm").submit(function(event) {
 
 //Use Google Civics API to find user district number from address data
 function getData(address) {
-    var foundAt=0;
+  var foundAt=0;
+
   gapiCivicsURL = `https://civicinfo.googleapis.com/civicinfo/v2/representatives?includeOffices=true&key=${API_KEY}&address=${address}`;
+  
   fetch(gapiCivicsURL)
     .then(function (response) {
         if(response.ok) {
@@ -35,6 +37,7 @@ function getData(address) {
       .then(function (data) {
         //due to changing object keys, must convert keys to array
         keysArr = Object.keys(data.divisions);
+
         for(i=0; i < keysArr.length; i++) {
             myString = keysArr[i];
             //due to changing data, must search each value to find district key
@@ -42,26 +45,26 @@ function getData(address) {
                 foundAt = i;
             }
         }
+
         //must convert to actual string object
         myString = keysArr[foundAt];
+
         //get district by splitting resulting string at 'cd:'
         district = myString.split("/cd:")[1];
         console.log(district); 
       });
 }
+
 function writeDistrict(){
   var readyToGo = setInterval(function() {
     if(keysArr.length > 3) {
       clearInterval(readyToGo);
-      // $("#districtOutput").empty(); 
+
       $("#districtOutput").html(`<li style="list-style-type: none;">Your District Number is:
-      <span style="font-size: 48px; font-weight:bold">${district}</span></li>`);
-      // district = 0; 
+        <span style="font-size: 48px; font-weight:bold">${district}</span></li>
+      `);
     }
   }, 1000)
 }
 
 writeDistrict();
-
-//output district result to page
-

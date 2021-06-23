@@ -127,7 +127,7 @@ function fetchCandidateTotalsOF() {
             return response.json();
         })
         .then(function (locRes) {
-            console.log("openFEC Candidate Totals", locRes);
+            // console.log("openFEC Candidate Totals", locRes);
             
             Candidate.financeCard.totalRaised = locRes.results[0].contributions;
             Candidate.financeCard.expenditure = locRes.results[0].disbursements;
@@ -187,13 +187,13 @@ function fetchCandidateAdvertismentSupportOF() {
             return response.json();
         })
         .then(function (locRes) {
-            console.log("openFEC Candidate Support Advertisments", locRes);
+            // console.log("openFEC Candidate Support Advertisments", locRes);
             
             if(locRes.pagination.count > 0) {
                 parseSupporters(locRes.results);
             }
 
-// Sending data to supporters.js
+            // Sending data to supporters.js
             displaySupporters(Candidate.supportersCard);
 
             apiReturns.push(true);
@@ -224,7 +224,7 @@ function fetchCandidateSupportOF() {
             return response.json();
         })
         .then(function (locRes) {
-            console.log("openFEC Candidate Support Schedule_e", locRes);
+            // console.log("openFEC Candidate Support Schedule_e", locRes);
 
             Candidate.supportersCard.totalSupportExpense = 0;
             Candidate.supportersCard.totalOpposeExpense = 0;
@@ -312,7 +312,7 @@ function fetchCandidateOF() {
             return response.json();
         })
         .then(function (locRes) {
-            console.log("openFEC Candidate Search", locRes);
+            // console.log("openFEC Candidate Search", locRes);
 
             if(locRes.results.length === 0) {
                 fetchCandidateAltMethodOF();
@@ -367,7 +367,7 @@ function fetchCandidatePersonalExplanationsPP() {
             return response.json();
         })
         .then(function (locRes) {
-            console.log("ProPublica Personal Explanation", locRes);
+            // console.log("ProPublica Personal Explanation", locRes);
 
             Candidate.voteHistoryCard.explanations = [];
 
@@ -417,7 +417,7 @@ function fetchCandidateVotePositions() {
             return response.json();
         })
         .then(function (locRes) {
-            console.log("ProPublica Vote Positions", locRes);
+            // console.log("ProPublica Vote Positions", locRes);
 
             Candidate.voteHistoryCard.votes = [];
             
@@ -469,7 +469,7 @@ function fetchCandidateTravels() {
             return response.json();
         })
         .then(function (locRes) {
-            console.log("ProPublica Trips", locRes);
+            // console.log("ProPublica Trips", locRes);
             
             Candidate.travelCard.tripsCandidate = [];
             Candidate.travelCard.tripsOther = [];
@@ -477,7 +477,8 @@ function fetchCandidateTravels() {
             if(locRes.num_results > 0) {
                 parseTrips(locRes.results);
             }
-//calls to generate travel card
+            
+            //calls to generate travel card
             fillTravelCard(Candidate.travelCard.tripsCandidate);
 
             apiReturns.push(true);
@@ -502,7 +503,7 @@ function fetchCandidatePP() {
             return response.json();
         })
         .then(function (locRes) {
-            console.log("ProPublica Candidate Search", locRes);
+            // console.log("ProPublica Candidate Search", locRes);
             
             Candidate.infoCard.firstName = locRes.results[0].first_name;
             Candidate.idPP = locRes.results[0].id;
@@ -553,7 +554,6 @@ function handleSearchSubmit(event) {
 
     districtPP = districtSelect.val();
     lastSearchedDistrict.district = districtPP;
-
     apiReturns = [];
 
     fetchCandidateOF();
@@ -609,23 +609,14 @@ loadStateSelection();
 loadDistrictSelection();
 loadPreviousSearch();
 
+// Event handler district search submit
 repSearchFormEl.on("submit", handleSearchSubmit)
 
 // Using this to check the API responses and see that the Candidate object functions correctly
 var display = setInterval(function() {
     if(apiReturns.length === 8) {
         clearInterval(display);
-         console.log("The Candidate", Candidate);
-        // console.log("The Candidate Photo:", Candidate.photo());
-        // console.log("The Candidate Full Name:", Candidate.infoCard.fullName());
-        // console.log("The Candidate Seat:", Candidate.infoCard.seat());
-        // console.log("The Candidate Party:", Candidate.infoCard.party());
-        // console.log("The Candidate Commitee Contributions:", Candidate.financeCard.nonIndependentContributions());
-        // console.log("The Candidate Grassroots Percentage:", Candidate.financeCard.grassRootsPercent());
-        // console.log("The Candidate Net Gain or Loss to Stash:", Candidate.financeCard.netGainLoss());
-        // console.log("The Candidate Supporters & Opposition:", Candidate.supportersCard);
-        // console.log("The Candidate Vote History:", Candidate.voteHistoryCard);
-        // console.log("The Candidate Trips:", Candidate.travelCard);
+        //  console.log("The Candidate", Candidate);
 
         // This is needed to delay the collapsible method so it applies properly
         setTimeout(function() {

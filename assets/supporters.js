@@ -36,36 +36,30 @@ function displaySupporters(data) {
         <div class="collapsible-header"><span style= "font-weight:bold; color:#223E88"><h4>supportersCard</h4></span>
     `);
 
-
-
     for (var i = 0; i < Candidate.supportersCard.support.length; i++) {
-
         $("#supports-data").append(`
-        <li> <span style= "font-weight: bold">Committee Name:</span> ${Candidate.supportersCard.support[i].committeeName}
-        <br> 
-        <span style= "font-weight: bold">Total Spent:</span> ${formatter.format(Candidate.supportersCard.support[i].totalSpent)}</li>
-        <br>
-       
+            <li> <span style= "font-weight: bold">Committee Name:</span> ${Candidate.supportersCard.support[i].committeeName}
+            <br> 
+            <span style= "font-weight: bold">Total Spent:</span> ${formatter.format(Candidate.supportersCard.support[i].totalSpent)}</li>
+            <br>
         `);
-
     }
+
     $("#supports-header").append(`
-
-<li><span style= "font-weight: bold">Total Support Expense:</span> ${formatter.format(Candidate.supportersCard.totalSupportExpense)}</li>
-
-`);
+        <li><span style= "font-weight: bold">Total Support Expense:</span> ${formatter.format(Candidate.supportersCard.totalSupportExpense)}</li>
+    `);
 
     for (var j = 0; j < Candidate.supportersCard.oppose.length; j++) {
         $("#oppose-data").append(`
-<li><span style= "font-weight: bold">Committee Name:</span> ${Candidate.supportersCard.oppose[j].committeeName}</li>
-<li><span style= "font-weight: bold">Total Spent</span> ${formatter.format(Candidate.supportersCard.oppose[j].totalSpent)}</li>
-<br>
-
-`);
+            <li><span style= "font-weight: bold">Committee Name:</span> ${Candidate.supportersCard.oppose[j].committeeName}</li>
+            <li><span style= "font-weight: bold">Total Spent</span> ${formatter.format(Candidate.supportersCard.oppose[j].totalSpent)}</li>
+            <br>
+        `);
     }
+
     $("#oppose-header").append(`
-<li><span style= "font-weight: bold">Total Oppose Expense</span> ${formatter.format(Candidate.supportersCard.totalOpposeExpense)}</li>
-`);
+        <li><span style= "font-weight: bold">Total Oppose Expense</span> ${formatter.format(Candidate.supportersCard.totalOpposeExpense)}</li>
+    `);
 
     $('.collapsible').collapsible();
 }

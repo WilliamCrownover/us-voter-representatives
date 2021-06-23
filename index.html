@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <!-- Materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <!-- Local css file -->
     <link rel="stylesheet" href="./assets/styles.css">
+    
     <link rel="shortcut icon" type="image/png" href="./assets/images/favicon.png">
     <title>US Voter Representatives</title>
 </head>
@@ -20,37 +22,31 @@
             <div class="nav-wrapper">
                 <img src="./assets/images/favicon.png" alt="logo" id="topFavicon"> 
                 <a class="brand-logo">US Voter Representatives Lookup Tool</a>
-                <!-- <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="#!" link="">Home</a></li>
-                    <li><a href="#!" link="">About</a></li>
-                    <li><a href="#!" link="">Contact</a></li>
-                </ul> -->
             </div>
         </nav>
 
+        <!-- Choose District Search -->
         <section>
-            <!-- <div class="displayInline"> -->
-                <h5>Choose District</h5>
-                <form id="repSearchForm">
-                    <select class="browser-default" id="stateSelect">
-                        <option value="" disabled selected>State</option>
-                        <!-- State search options will load here -->
-                    </select>
-                    <select class="browser-default" id="districtSelect">
-                        <option value="" disabled selected>Number</option>
-                        <!-- District number search options will load here -->
-                    </select>
-                    <button type="submit" class="btn">Search</button>
-                    <h6 id="noDistrict" class="hidden">That district does not exist.<br>Please try lowering the number for that state.</h6>
-                    <h6 id="loadingText" class="hidden">LOADING DATA...</h6>
-                </form>
-                <div id="previousSearch" class="">
-                    <h6>Previous Search: AL 01</h6>
-                </div>
-            <!-- </div> -->
+            <h5>Choose District</h5>
+            <form id="repSearchForm">
+                <select class="browser-default" id="stateSelect">
+                    <option value="" disabled selected>State</option>
+                    <!-- State search options will load here -->
+                </select>
+                <select class="browser-default" id="districtSelect">
+                    <option value="" disabled selected>Number</option>
+                    <!-- District number search options will load here -->
+                </select>
+                <button type="submit" class="btn">Search</button>
+                <h6 id="noDistrict" class="hidden">That district does not exist.<br>Please try lowering the number for that state.</h6>
+                <h6 id="loadingText" class="hidden">LOADING DATA...</h6>
+            </form>
+            <div id="previousSearch">
+                <h6>Previous Search: AL 01</h6>
+            </div>
         </section>                    
 
-        <!-- Find your district section starts here  -->
+        <!-- Find Your District Search -->
         <section class="sectionDistrict">
             <h5>Find Your District</h5>
             <ul >
@@ -60,22 +56,20 @@
             <form id="usrAddressForm">
                 <div class="row" id="addressSearchBar">
                     <div class="input-field addr-field">
-                    <input  id="street_address" type="text" class="validate">
-                    <label style="color:white" for="street_address">Street Address</label>
+                        <input  id="street_address" type="text" class="validate">
+                        <label style="color:white" for="street_address">Street Address</label>
                     </div>
-
                     <div class="input-field addr-field">
-                    <input id="zip" type="text" class="validate">
-                    <label style="color:white" for="zip">Zip Code</label>
+                        <input id="zip" type="text" class="validate">
+                        <label style="color:white" for="zip">Zip Code</label>
                     </div>
-
                     <input class="btn" type="submit" value="Find My District">
                     <span id="districtOutput" style="font-size: 48px; font-weight:bold"></span>
                 </div>
             </form>        
         </section>
-        <!-- Find Your District section ends here  -->
 
+        <!-- Intro Blurb -->
         <section>
             <ul class="listOne">
                 <li>Are you interested in voting but unsure where to start?</li>
@@ -90,6 +84,8 @@
 
     <main id="grid">
         <div class="row">
+
+            <!-- Info Card -->
             <div class="card col s4" id="info-card" class="collapsible">
                 <div class="card-content">
                     <img src="./assets/images/education_icon_142625.png" alt="info" width="100" height="100">
@@ -97,149 +93,71 @@
                 </div>
                 <div class="table">
                     <div class="info-photo" id="repPhoto">
-                        <!-- Photo loads here -->
+                        <!-- Photo appended here -->
                     </div>
-                    
                     <div class="expend-table" id=infoCardDataContainer class="collapsible">
-                        <!-- <output>Name</output>
-                        <output>Seat</output>
-                        <output>Party</output> -->
+                        <!-- Info appended here -->
                     </div>
                 </div>
             </div>
 
+            <!-- Finance Card -->
             <div class="card col s4" id="finance-card">
                 <div class="card-content">
                     <img src="./assets/images/flatten_the_curve_icon_142602.png" alt="info" width="100" height="100">
                     <p>Finance Card</p>
                 </div>
                 <div class="expend-table" id="financeDataContainer">
+                    <!-- Finance data appended here -->
                 </div>
             </div>
             
+            <!-- Supporters Card -->
             <div class="card col s4" id="supporters-card">
                 <div class="card-content">
                     <img src="./assets/images/thumbs_up_icon_142634.png" alt="info" width="100" height="100">
                     <p>Supporters Card</p>
-                </div>    
-                <!-- <ul class="collapsible"   data-collapsible="accordion">
-                    <li>
-                        <div class= "collapsible-header" id="supports-header"></div>
-                        <div class= "collapsible-body" id="supports-data"></div>
-                    </li>
-                </ul>
-                <ul class="collapsible"   data-collapsible="accordion">
-                    <li>
-                        <div class= "collapsible-header" id="oppose-header"></div>
-                        <div class= "collapsible-body" id="oppose-data"></div>
-                    </li>
-                </ul> -->
+                </div>
+                <!-- Supporters data appended here -->
             </div>
         </div>
 
         <div class="row">
+
+            <!-- Vote History Card -->
             <div class="card col s6" id="vote-history-card">
                 <div class="card-content">
                     <img src="./assets/images/dialogue_icon_142637.png" alt="info" width="100" height="100">
                     <p>Vote History Card</p> 
                 </div>
-                <!-- <div class="expend-table" id="vote-history-content">  -->
                 <div class="cardWrapper" > 
                     <div>
                         <ul id="vote-history-content" class="collapsible" data-collapsible="accordion">
-                            <!-- <li>
-                                <div class="collapsible-header"><span style="font-weight:bold; color:#223E88"><h4>CANDIDATE VOTE HISTORY</h4></span></div>
-                            </li> -->
+                            <!-- Vote History appended here -->
                         </ul>
                     </div>
                     <div>
                         <ul id="missed-votes-content" class="collapsible" data-collapsible="accordion">
-                            <!-- <li>
-                                <div class="collapsible-header"><span style="font-weight:bold; color:#223E88"><h4>CANDIDATE MISSED VOTES</h4></span></div>
-                            </li> -->
+                            <!-- Missed Votes appended here -->
                         </ul>
                     </div>
                 </div> 
             </div>
 
-
+            <!-- Travel Card -->
             <div class="card col s6"> 
                 <div class="card-content">
                     <img src="./assets/images/travel_icon_142598.png" alt="info" width="100" height="100">
                     <p>Travel Card</p>
                 </div>
-
-                <!-- <div class="table">
-                    <div class="info-photo">
-                        <p>Map</p>
-                    </div>
-                    <br/>
-                </div> -->
                 <div id="travel-card">
-                    <!-- The appended trip data will go here now -->
+                    <!-- Trip data appended here -->
                 </div>
             </div> 
         </div>
-
-
-
-        <!-- <div class="card" id="bonus-card">
-            <div class="card-content">
-                <img src="./assets/images/care_icon_142694.png" alt="info" width="100" height="100">
-                <p>Feedback</p>
-            </div>
-        
-            <div class="row">
-                <form class="col s12">
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="first_name" type="text" class="validate">
-                            <label for="first_name">First Name</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input id="last_name" type="text" class="validate">
-                            <label for="last_name">Last Name</label>
-                        </div>
-                    </div>
-                
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="email" type="email" class="validate">
-                            <label for="email">Email</label>
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="email" type="email" class="validate">
-                            <label for="email">Comments</label>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>  -->
     </main>
 
     <footer class="page-footer">
-        <!-- <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Helpful Links</h5>
-                    <ul>
-                        <li><a class="grey-text text-lighten-3" href="#!">Additional Resources</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">FAQ</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Maps</a></li>
-                    </ul>
-                </div>
-                <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">More Info.</h5>
-                    <ul>
-                        <li><a class="grey-text text-lighten-3" href="#!">Meet the Developers</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Social Media</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div> -->
         <div class="footer-copyright">
             <div class="container">
             © 2021 Copyright Text

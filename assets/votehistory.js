@@ -4,6 +4,7 @@ var voteTitle = "";
 //Clear section & add header for Vote History section
 function appendVotesData() {
     $("#vote-history-content").empty();
+
     $("#vote-history-content").append(`
         <li>
             <div class="collapsible-header"><span style="font-weight:bold; color:#223E88"><h4>CANDIDATE VOTE HISTORY</h4></span></div>
@@ -20,6 +21,7 @@ function appendVotesData() {
         //Generate static title section first
         var voteTitle = Candidate.voteHistoryCard.votes[i].title;
         }
+
         //write remaining data to accordion section, expands on title click
         $("#vote-history-content").append(`
             <li>
@@ -55,26 +57,26 @@ function appendExplanationsData() {
     //If no missed votes data exists, write message to user
     if(!Candidate.voteHistoryCard.explanations.length) {
         $("#missed-votes-content").append(`
-        <ul class="collapsible" data-collapsible="accordion">
-            <li>
-                <div class="collapsible-header" style="font-weight:bold"><span style="font-weight:bold">No missed votes recorded for candidate.</span></div>
-            </li>
-        </ul>
+            <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                    <div class="collapsible-header" style="font-weight:bold"><span style="font-weight:bold">No missed votes recorded for candidate.</span></div>
+                </li>
+            </ul>
         `)
     }
     else {
         //otherwise write Missed Votes data to screen by date
         for(i = 0; i < Candidate.voteHistoryCard.explanations.length; i++) {
             $("#missed-votes-content").append(`
-            <ul class="collapsible" data-collapsible="accordion">
-                <li>
-                    <div class="collapsible-header" style="font-weight:bold"><span style="font-weight:bold">Date of missed vote:\u00A0${Candidate.voteHistoryCard.explanations[i].date}</span></div>
-                    <div class="collapsible-body">
-                    <p><span style="font-weight:bold">Category: </span>${Candidate.voteHistoryCard.explanations[i].category}</p>
-                    <p><span style="font-weight:bold">Explanation given: </span>${Candidate.voteHistoryCard.explanations[i].text}</p>
-                    </div>
-                </li>
-            </ul>
+                <ul class="collapsible" data-collapsible="accordion">
+                    <li>
+                        <div class="collapsible-header" style="font-weight:bold"><span style="font-weight:bold">Date of missed vote:\u00A0${Candidate.voteHistoryCard.explanations[i].date}</span></div>
+                        <div class="collapsible-body">
+                        <p><span style="font-weight:bold">Category: </span>${Candidate.voteHistoryCard.explanations[i].category}</p>
+                        <p><span style="font-weight:bold">Explanation given: </span>${Candidate.voteHistoryCard.explanations[i].text}</p>
+                        </div>
+                    </li>
+                </ul>
             `)
         }
     }
@@ -84,6 +86,7 @@ function appendExplanationsData() {
 function writeVoterInfoCard() {
     appendVotesData(); 
     appendExplanationsData(); 
+
     $("#vote-history-content").find(".collapsible").collapsible();
     $("#missed-votes-content").find(".collapsible").collapsible();
 }

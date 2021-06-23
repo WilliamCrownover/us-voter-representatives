@@ -1,6 +1,5 @@
 *{
     font-family:serif;
-   
 }
 
 nav {
@@ -23,49 +22,15 @@ nav img{
 #grid{
     width: 97vw;
     min-height: 100vh;
-
-    /* display: grid; */
     grid-template: 1fr 1fr  / 1fr 1fr 1fr;
-    /* gap: 10px; */
     margin: 0 1%;
 }
-
-/* #info-card{
-    grid-row-start: 1;
-    grid-column-start:1;
-}
-
-#travel-card{
-    grid-row-start: 1;
-    grid-column-start:2;
-}
-
-#finance-card{
-    grid-row-start: 1;
-    grid-column-start:3;
-}
-
-#vote-history-card{
-    grid-row-start: 2;
-    grid-column-start:1;
-}
-
-#supporters-card{
-    grid-row-start: 2;
-    grid-column-start:2;
-}
-
-#bonus-card{
-    grid-row-start: 2;
-    grid-column-start:3;
-} */
 
 section{
     background-color:  #0168AD;
     width: 100%;
     height: 128px;
     padding: 10px 40px;
-    /* margin: 10px 0px 10px; */
 }
 
 .sectionDistrict {
@@ -130,7 +95,6 @@ section li{
 
 .card-content p{
     text-align: center;
-    /* border: solid black 1px; */
     padding: 20px 20px;   
     font-size: 30px;
     color: #fff;
@@ -139,7 +103,6 @@ section li{
 }
 
 .finance-ratio, .info-photo{
-    /* border: solid black 1px; */
     padding: 0px;
 }
 
@@ -161,12 +124,10 @@ section li{
     padding:10px;
 }
 
-
 .cardWrapper {
     padding: 5px;
     margin-left: 5px;
 }
-
 
 .browser-default {
     width: 20%;
@@ -224,8 +185,6 @@ h6 {
 }
 
 #districtOutput {
-    /* margin-right: 800px; */
-    /* margin-bottom: 500px; */
     margin-left: 20px;
     margin-top: 2px;
     font-size: 36px;
@@ -236,7 +195,6 @@ h6 {
 }
 
 #usrAddressForm div {
-    /* position: relative;  */
     background-color: #0168AD;
 }
 
