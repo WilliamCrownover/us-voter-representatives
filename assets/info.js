@@ -2,7 +2,7 @@
 var infoCardDataId= $("#infoCardDataContainer");
 
 
- function displayInfoCard(data) {  
+ function displayInfoCard() {  
 
     
 
