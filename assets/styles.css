@@ -1,0 +1,223 @@
+*{
+    font-family:serif;
+}
+
+nav {
+    background-color:  #223E88!important;
+    margin-bottom: 10px;
+}
+
+footer{
+    background-color:  #223E88!important;
+}
+
+body{
+    background-color: lightgrey;;
+}
+
+nav img{
+    max-width: 40px;
+}
+
+#grid{
+    width: 97vw;
+    min-height: 100vh;
+    grid-template: 1fr 1fr  / 1fr 1fr 1fr;
+    margin: 0 1%;
+}
+
+section{
+    background-color:  #0168AD;
+    width: 100%;
+    height: 128px;
+    padding: 10px 40px;
+}
+
+.sectionDistrict {
+    background-color:  #0168AD;
+    width: 100%;
+    height: 230px;
+    padding: 10px 40px;
+}
+
+.listOne{
+    float: left;
+}
+
+.listTwo{
+    float:right;
+}
+
+section li{
+    font-size: large;
+    margin: 0px;
+    color: #fff;
+}
+
+.card-content img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.row .col.s4 {
+    width: calc(33.33% - 4px);
+    margin-left: 0;
+}
+
+.row .col.s6 {
+    width: calc(50% - 3px);
+    margin-left: 0;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: 0;
+}
+
+#addressSearchBar {
+    justify-content: start;
+}
+
+#addressSearchBar div {
+    margin-right: 20px;
+}
+
+#street_address {
+    width: 250px;
+}
+
+.row::after {
+    content: none;
+}
+
+.card-content p{
+    text-align: center;
+    padding: 20px 20px;   
+    font-size: 30px;
+    color: #fff;
+    background-color: red;
+    font-family: serif;
+}
+
+.finance-ratio, .info-photo{
+    padding: 0px;
+}
+
+.expend-table output, .finance-table output{
+    border: solid black 1px;
+    padding: 15px;
+    display: block;
+    margin: 1px;
+}
+
+.travel-info, .vote-info{
+    border: solid black 1px;
+    padding: 10px;
+    margin:5px 5px; 
+}
+
+.destination-out, .sponsor-out,.category-out, .text-out {
+    border: solid black 1px;
+    padding:10px;
+}
+
+.cardWrapper {
+    padding: 5px;
+    margin-left: 5px;
+}
+
+.browser-default {
+    width: 20%;
+}
+
+#districtSelect {
+    width: 90px
+}
+
+select.browser-default {
+    display: inline-block;
+    margin-right: 10px;
+    width: 140px;
+}
+
+h5 {
+    color: white;
+}
+
+#topFavicon {
+    margin: 15px;
+    margin-top: 12px;
+}
+
+#repSearchForm {
+    position: relative;
+}
+
+.btn {
+    height: 45px;
+    margin-bottom: 5px;
+    background-color: #223E88;
+}
+
+.btn:hover {
+    background-color: #40b5e0;
+}
+
+input.btn {
+    margin-top: 15px;
+}
+
+h6 {
+    box-sizing: border-box;
+    color: white;
+    display: inline-block;
+    margin: 0;
+    margin-left: 15px;
+    margin-top: 2px;
+    position: absolute;
+}
+
+.hidden {
+    display: none;
+}
+
+#districtOutput {
+    margin-left: 20px;
+    margin-top: 2px;
+    font-size: 36px;
+}
+
+.header-wrapper {
+    background-color: #0168AD;
+}
+
+#usrAddressForm div {
+    background-color: #0168AD;
+}
+
+#previousSearch h6 {
+    margin: 10px 0;
+    margin-bottom: 20px;
+}
+
+#repPhoto {
+    display: flex;
+}
+
+#repPhoto img {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.collapseLook {
+    display: flex;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 1.5;
+    padding: 1rem;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
