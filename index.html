@@ -12,21 +12,22 @@
     <link rel="shortcut icon" type="image/png" href="./assets/images/favicon.png">
     <title>US Voter Representatives</title>
 </head>
+
 <body>   
+    
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+                <img src="./assets/images/favicon.png" alt="logo" id="topFavicon"> 
+                <a class="brand-logo">US Voter Representatives Lookup Tool</a>
+                <!-- <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#!" link="">Home</a></li>
+                    <li><a href="#!" link="">About</a></li>
+                    <li><a href="#!" link="">Contact</a></li>
+                </ul> -->
+            </div>
+        </nav>
 
-    <nav>
-        <div class="nav-wrapper">
-            <img src="./assets/images/favicon.png" alt="logo" id="topFavicon"> 
-            <a class="brand-logo">US Voter Representatives Lookup Tool</a>
-            <!-- <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="#!" link="">Home</a></li>
-                <li><a href="#!" link="">About</a></li>
-                <li><a href="#!" link="">Contact</a></li>
-            </ul> -->
-        </div>
-    </nav>
-
-    <div class="header-wrapper">
         <section>
             <!-- <div class="displayInline"> -->
                 <h5>Choose District</h5>
@@ -44,7 +45,7 @@
                     <h6 id="loadingText" class="hidden">LOADING DATA...</h6>
                 </form>
             <!-- </div> -->
-        </section>
+        </section>                    
 
         <!-- Find your district section starts here  -->
         <section class="sectionDistrict">
@@ -53,19 +54,19 @@
                 <li>Not sure who your US Representative is?</li>
                 <li>Enter your street address and zip code below to find them.</li>
             </ul>
-            <form id="usrAddressForm" class="col s12">
-                <div class="row">
-                    <div class="input-field addr-field col s5">
+            <form id="usrAddressForm">
+                <div class="row" id="addressSearchBar">
+                    <div class="input-field addr-field">
                     <input  id="street_address" type="text" class="validate">
                     <label style="color:white" for="street_address">Street Address</label>
                     </div>
 
-                    <div class="input-field addr-field col s2">
+                    <div class="input-field addr-field">
                     <input id="zip" type="text" class="validate">
                     <label style="color:white" for="zip">Zip Code</label>
                     </div>
 
-                    <input class="btn " type="submit" value="Find My District">
+                    <input class="btn" type="submit" value="Find My District">
                     <span id="districtOutput" style="font-size: 48px; font-weight:bold"></span>
                 </div>
             </form>        
@@ -82,173 +83,165 @@
                 <li>Use the search above to review candidate information.</li>
             </ul>
         </section>
-    </div>
-    
+    </header>
 
     <main id="grid">
-        
-        <div class="card" id="info-card" class="collapsible">
-          <div class="card-content">
-                <img src="./assets/images/education_icon_142625.png" alt="info" width="100" height="100">
-                <p>Information Card</p>
-            </div>
-            <div class="table" class="collapsible">
-                
-                <div class="expend-table" id=infoCardDataContainer class="collapsible">
-                    <output>Name</output>
-                    <output>Seat</output>
-                    <output>Party</output>
+        <div class="row">
+            <div class="card col s4" id="info-card" class="collapsible">
+                <div class="card-content">
+                    <img src="./assets/images/education_icon_142625.png" alt="info" width="100" height="100">
+                    <p>Information Card</p>
+                </div>
+                <div class="table">
+                    <div class="info-photo">
+                        <p>Photo</p>
+                    </div>
+                    
+                    <div class="expend-table" id=infoCardDataContainer class="collapsible">
+                        <output>Name</output>
+                        <output>Seat</output>
+                        <output>Party</output>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="card"> 
-            <div class="card-content">
-                <img src="./assets/images/travel_icon_142598.png" alt="info" width="100" height="100">
-                <p>Travel Card</p>
-            </div>
-
-            <div class="table">
-                <div class="info-photo">
-                    <p>Map</p>
+            <div class="card col s4" id="finance-card">
+                <div class="card-content">
+                    <img src="./assets/images/flatten_the_curve_icon_142602.png" alt="info" width="100" height="100">
+                    <p>Finance Card</p>
                 </div>
-                <br/>
-                <!-- <div class="expend-table">
-                    <output>Destination</output>
-                    <output>Sponsor</output>
-                </div> -->
-            </div>
-            <div id="travel-card">
-                <!-- The appended trip data will go here now -->
-            </div>
-            <!--<div class="travel-info">
-                <p>Travel Information</p>
-                    <output class="destination-out">Destination</output>
-                    <output class="sponsor-out">Sponsor</output>
-            </div> -->
-        </div> 
-
-
-        <div class="card" id="finance-card">
-            <div class="card-content">
-                <img src="./assets/images/flatten_the_curve_icon_142602.png" alt="info" width="100" height="100">
-            <p>Finance Card</p>
-            </div>
-            <div class="expend-table" id="financeDataContainer">
-            </div>
-        </div>
-
-
-
-        <div class="card" id="vote-history-card">
-            <div class="card-content">
-                <img src="./assets/images/dialogue_icon_142637.png" alt="info" width="100" height="100">
-            <p>Vote History Card</p> 
-            </div>
-            <!-- <div class="expend-table" id="vote-history-content">  -->
-            <div class="cardWrapper" > 
-                <div>
-                    <ul id="vote-history-content" class="collapsible" data-collapsible="accordion">
-                        <li>
-                        <div class="collapsible-header"><span style="font-weight:bold; color:#223E88"><h4>CANDIDATE VOTE HISTORY</h4></span>
-                        </li>
-                    </ul>
+                <div class="expend-table" id="financeDataContainer">
                 </div>
-                <div>
-                    <ul id="missed-votes-content" class="collapsible" data-collapsible="accordion">
-                        <li>
-                        <div class="collapsible-header"><span style="font-weight:bold; color:#223E88"><h4>CANDIDATE MISSED VOTES</h4></span>
-                        </li>
-                    </ul>
-                </div>
-            </div> 
-        </div>
-
-
-        <div class="card" id="supporters-card">
-            <div class="card-content">
-                <img src="./assets/images/thumbs_up_icon_142634.png" alt="info" width="100" height="100">
-                <p>Supporters Card</p>
             </div>
+
+            <div class="card col s4" id="supporters-card">
+                <div class="card-content">
+                    <img src="./assets/images/thumbs_up_icon_142634.png" alt="info" width="100" height="100">
+                    <p>Supporters Card</p>
+                </div>
                 <div class="table">
                     <div class="expend-table">
                         <output>Committee</output>
                         <output>Expenditure</output>
                         <output>Support or Oppose</output>
                     </div>
-
+    
                     <div class="expend-table">
                         <output>Committee</output>
                         <output>Expenditure</output>
                         <output>Support or Oppose</output>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="card col s6" id="vote-history-card">
+                <div class="card-content">
+                    <img src="./assets/images/dialogue_icon_142637.png" alt="info" width="100" height="100">
+                    <p>Vote History Card</p> 
+                </div>
+                <!-- <div class="expend-table" id="vote-history-content">  -->
+                <div class="cardWrapper" > 
+                    <div>
+                        <ul id="vote-history-content" class="collapsible" data-collapsible="accordion">
+                            <li>
+                                <div class="collapsible-header"><span style="font-weight:bold; color:#223E88"><h4>CANDIDATE VOTE HISTORY</h4></span></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul id="missed-votes-content" class="collapsible" data-collapsible="accordion">
+                            <li>
+                                <div class="collapsible-header"><span style="font-weight:bold; color:#223E88"><h4>CANDIDATE MISSED VOTES</h4></span></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div> 
+            </div>
+
+
+            <div class="card col s6"> 
+                <div class="card-content">
+                    <img src="./assets/images/travel_icon_142598.png" alt="info" width="100" height="100">
+                    <p>Travel Card</p>
+                </div>
+
+                <!-- <div class="table">
+                    <div class="info-photo">
+                        <p>Map</p>
+                    </div>
+                    <br/>
+                </div> -->
+                <div id="travel-card">
+                    <!-- The appended trip data will go here now -->
+                </div>
+            </div> 
         </div>
 
 
-        <div class="card" id="feedback-card">
+
+        <!-- <div class="card" id="bonus-card">
             <div class="card-content">
                 <img src="./assets/images/care_icon_142694.png" alt="info" width="100" height="100">
                 <p>Feedback</p>
             </div>
-
-            
-  <div class="row">
-            <form class="col s12">
+        
             <div class="row">
-                <div class="input-field col s6">
-                <input id="first_name" type="text" class="validate">
-                <label for="first_name">First Name</label>
-                </div>
-                <div class="input-field col s6">
-                <input id="last_name" type="text" class="validate">
-                <label for="last_name">Last Name</label>
-                </div>
-            </div>
-           
-            <div class="row">
-                <div class="input-field col s12">
-                <input id="email" type="email" class="validate">
-                <label for="email">Email</label>
-                </div>
-            </div>
-            
-            <div class="row">
-                    <div class="input-field col s12">
-                    <input id="email" type="email" class="validate">
-                    <label for="email">Comments</label>
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="first_name" type="text" class="validate">
+                            <label for="first_name">First Name</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="last_name" type="text" class="validate">
+                            <label for="last_name">Last Name</label>
+                        </div>
                     </div>
+                
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="email" type="email" class="validate">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="email" type="email" class="validate">
+                            <label for="email">Comments</label>
+                        </div>
+                    </div>
+                </form>
             </div>
-           
-            </form>
-        </div>
-    </div> 
-
+        </div>  -->
     </main>
+
     <footer class="page-footer">
-        <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-            <h5 class="white-text">Helpful Links</h5>
-            <ul>
-                <li><a class="grey-text text-lighten-3" href="#!">Additional Resources</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">FAQ</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Maps</a></li>
-            </ul>
+        <!-- <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Helpful Links</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Additional Resources</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">FAQ</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Maps</a></li>
+                    </ul>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">More Info.</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Meet the Developers</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Social Media</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">More Info.</h5>
-            <ul>
-                <li><a class="grey-text text-lighten-3" href="#!">Meet the Developers</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Social Media</a></li>
-            </ul>
-            </div>
-        </div>
-        </div>
+        </div> -->
         <div class="footer-copyright">
-        <div class="container">
-        © 2021 Copyright Text
-        </div>
+            <div class="container">
+            © 2021 Copyright Text
+            </div>
         </div>
     </footer>
     
