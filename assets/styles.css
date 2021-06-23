@@ -1,5 +1,14 @@
+*{
+    font-family:serif;
+   
+}
 
-nav, footer{
+nav {
+    background-color:  #223E88!important;
+    margin-bottom: 10px;
+}
+
+footer{
     background-color:  #223E88!important;
 }
 
@@ -11,11 +20,9 @@ nav img{
     max-width: 40px;
 }
 
-
-
 #grid{
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
 
     display: grid;
     grid-template: 1fr 1fr  / 1fr 1fr 1fr;
@@ -37,7 +44,6 @@ nav img{
     grid-column-start:3;
 }
 
-
 #vote-history-card{
     grid-row-start: 2;
     grid-column-start:1;
@@ -53,19 +59,19 @@ nav img{
     grid-column-start:3;
 }
 
-
 section{
-    background-color:  #0168AD;;
+    background-color:  #0168AD;
     width: 100%;
-    height: 200px;
-    padding: 10px 30px;
-    margin: 10px 0px 10px;
+    height: 128px;
+    padding: 10px 40px;
+    /* margin: 10px 0px 10px; */
 }
-section div{
-    position: relative;
-    
-    background-color: #40b5e0;
-   
+
+.sectionDistrict {
+    background-color:  #0168AD;
+    width: 100%;
+    height: 230px;
+    padding: 10px 40px;
 }
 
 .listOne{
@@ -90,6 +96,7 @@ section li{
 
 .card{
     margin: 6px 0px 6px !important;
+    background-color: ivory;
 }
 
 .card-content p{
@@ -114,7 +121,6 @@ section li{
     margin: 1px;
 }
 
-
 .travel-info, .vote-info{
     border: solid black 1px;
     padding: 10px;
@@ -126,10 +132,12 @@ section li{
     padding:10px;
 }
 
+
 .cardWrapper {
     padding: 5px;
     margin-left: 5px;
 }
+
 
 .browser-default {
     width: 20%;
@@ -180,4 +188,20 @@ h6 {
 
 .hidden {
     display: none;
+}
+
+#districtOutput {
+    margin-right: 800px;
+    /* margin-bottom: 500px; */
+    margin-top: 2px;
+    font-size: 36px;
+}
+
+.header-wrapper {
+    background-color: #0168AD;
+}
+
+#usrAddressForm div {
+    /* position: relative;  */
+    background-color: #0168AD;
 }
