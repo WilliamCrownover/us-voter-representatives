@@ -130,7 +130,7 @@ section li{
 
 .card-content p{
     text-align: center;
-    border: solid black 1px;
+    /* border: solid black 1px; */
     padding: 20px 20px;   
     font-size: 30px;
     color: #fff;
@@ -139,8 +139,8 @@ section li{
 }
 
 .finance-ratio, .info-photo{
-    border: solid black 1px;
-    padding: 40px;
+    /* border: solid black 1px; */
+    padding: 0px;
 }
 
 .expend-table output, .finance-table output{
@@ -243,4 +243,23 @@ h6 {
 #previousSearch h6 {
     margin: 10px 0;
     margin-bottom: 20px;
+}
+
+#repPhoto {
+    display: flex;
+}
+
+#repPhoto img {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.collapseLook {
+    display: flex;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 1.5;
+    padding: 1rem;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
 }
