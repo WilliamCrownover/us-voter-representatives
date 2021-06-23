@@ -162,8 +162,8 @@ function parseSupporters(array) {
         }
     }
     
-    Candidate.supportersCard.totalSupportExpense = parseInt(totalSupport.toFixed(2));
-    Candidate.supportersCard.totalOpposeExpense = parseInt(totalOppose.toFixed(2));
+    Candidate.supportersCard.totalSupportExpense = parseFloat(totalSupport.toFixed(2));
+    Candidate.supportersCard.totalOpposeExpense = parseFloat(totalOppose.toFixed(2));
 }
 
 function fetchCandidateAdvertismentSupportOF() {
