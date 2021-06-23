@@ -239,3 +239,8 @@ h6 {
     /* position: relative;  */
     background-color: #0168AD;
 }
+
+#previousSearch h6 {
+    margin: 10px 0;
+    margin-bottom: 20px;
+}

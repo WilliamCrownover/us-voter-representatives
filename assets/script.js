@@ -17,6 +17,9 @@
 // Tracking Variables
     var apiReturns = [];
 
+// Local Storage
+    var lastSearchedDistrict = JSON.parse(localStorage.getItem("lastSearchedDistrict")) || {state: '', district: ''};
+
 // Candidate Data Object
     var Candidate = {
         idOF: "",
@@ -527,7 +530,7 @@ function handleSearchSubmit(event) {
     event.preventDefault();
 
     state = stateSelectEl.val();
-    lastSearched.state = state;
+    lastSearchedDistrict.state = state;
     var tempDistrictNumber = parseInt(districtSelect.val());
 
     for(var i = 0; i < stateData.length; i++) {
@@ -547,7 +550,7 @@ function handleSearchSubmit(event) {
     }
 
     districtPP = districtSelect.val();
-    lastSearched.district = districtPP;
+    lastSearchedDistrict.district = districtPP;
 
     apiReturns = [];
 
@@ -557,6 +560,7 @@ function handleSearchSubmit(event) {
     loadingTextEl.removeClass("hidden");
 
     setLastSearched();
+    displayLastSearch();
 
     var loading = setInterval(function() {
         if(apiReturns.length === 8) {
@@ -568,8 +572,40 @@ function handleSearchSubmit(event) {
     }, 500);
 }
 
+function loadPreviousSearch() {
+    displayLastSearch();
+
+    if(lastSearchedDistrict.state !== '') {
+        state = lastSearchedDistrict.state;
+
+        if(oneDistrictStates.includes(state)) {
+            districtOF = "00";
+        } else {
+            districtOF = lastSearchedDistrict.district;
+        }
+
+        districtPP = lastSearchedDistrict.district;
+        apiReturns = [];
+
+        fetchCandidateOF();
+        fetchCandidatePP();
+
+        loadingTextEl.removeClass("hidden");
+
+        var loading = setInterval(function() {
+            if(apiReturns.length === 8) {
+                loadingTextEl.addClass("hidden");
+                console.log("-----Loaded-----");
+                displayInfoCard();
+                clearInterval(loading);
+            }
+        }, 500);
+    }
+}
+
 loadStateSelection();
 loadDistrictSelection();
+loadPreviousSearch();
 
 repSearchFormEl.on("submit", handleSearchSubmit)
 
