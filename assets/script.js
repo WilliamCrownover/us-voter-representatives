@@ -222,6 +222,11 @@ function fetchCandidateSupportOF() {
         })
         .then(function (locRes) {
             console.log("openFEC Candidate Support Schedule_e", locRes);
+
+            Candidate.supportersCard.totalSupportExpense = 0;
+            Candidate.supportersCard.totalOpposeExpense = 0;
+            Candidate.supportersCard.support = [];
+            Candidate.supportersCard.oppose = [];
             
             if(locRes.pagination.count > 0) {
                 parseSupporters(locRes.results);
