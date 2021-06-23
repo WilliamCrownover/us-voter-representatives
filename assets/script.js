@@ -529,6 +529,8 @@ function noDistrict() {
 function handleSearchSubmit(event) {
     event.preventDefault();
 
+    if(!stateSelectEl.val() || !districtSelect.val()) return;
+
     state = stateSelectEl.val();
     lastSearchedDistrict.state = state;
     var tempDistrictNumber = parseInt(districtSelect.val());
