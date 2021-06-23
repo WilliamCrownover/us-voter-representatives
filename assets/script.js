@@ -497,7 +497,6 @@ function fetchCandidatePP() {
             Candidate.idPP = locRes.results[0].id;
             Candidate.infoCard.lastName = locRes.results[0].last_name;
             Candidate.infoCard.middleInitial = locRes.results[0].middle_name;
-
             
             fetchCandidateVotePositions();
             fetchCandidateTravels();
@@ -555,6 +554,7 @@ function handleSearchSubmit(event) {
         if(apiReturns.length === 8) {
             loadingTextEl.addClass("hidden");
             console.log("-----Loaded-----");
+            displayInfoCard();
             clearInterval(loading);
         }
     }, 500);
