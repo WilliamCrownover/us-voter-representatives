@@ -4,13 +4,12 @@
 
 ## About
 
- This app helps US voters to be informed about their representatives. The scope of the project will start with Washington State and show the current elected house members.
- We created site which adheres to accessibility needs. Also as it is compliant with accessibility standards it will be ranked higher in search engines.
+ This app helps US voters to be informed about their representatives. By using publicly available civic APIs we created a tool to bring hidden information to curious voters in a non-biased, comprehensible way.
 
 
 ## Screenshots and mockups of the page
 
-|<img src="assets/images/pixels.jpg" width="600" height="350" alt="Homepage"/>| <img src="assets/images/mock_up.png" width="450" height="650" alt="Mockup"/> |
+|<img src="assets/images/screenshot.jpg" height="650" alt="Homepage"/>| <img src="assets/images/mock_up.PNG" width="450" height="650" alt="Mockup"/> |
 | --- | --- |
 |  Work done | Mockup |
 
@@ -35,10 +34,6 @@
   - materializecss
   - google fonts
   
-
-## Directions for Future Development
-
-
 
 ## How can I contribute or help?
 - Star our GitHub repo :star:
