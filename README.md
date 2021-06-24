@@ -9,7 +9,7 @@
 
 ## Screenshots and mockups of the page
 
-|![A user clicks to find info.](./assets/images/representat.gif)| <img src="assets/images/mock_up.PNG" width="250" height="450" alt="Mockup"/> |
+|![A user clicks to find info.](./assets/images/representat.gif)| <img src="assets/images/mock_up_500w.png" width="250" height="450" alt="Mockup"/> |
 | --- | --- |
 |  Work done | Mockup |
 
