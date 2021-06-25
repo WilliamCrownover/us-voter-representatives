@@ -6,14 +6,15 @@
     });
 
 function displaySupporters(data) {
-    $("#supporters-card").empty();
+    let supCard = $("#supporters-card > .card");
+    supCard.empty();
     $("#supporters-data").empty();
     $("#supports-data").empty();
     $("#supports-header").empty();
     $("#oppose-data").empty();
     $("#oppose-header").empty();
 
-    $("#supporters-card").append(`
+    supCard.append(`
         <div class="card-content">
             <img src="./assets/images/thumbs_up_icon_142634.png" alt="info" width="100" height="100">
             <p>Supporters Card</p>
