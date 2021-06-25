@@ -1,84 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <!-- Local css file -->
     <link rel="stylesheet" href="./assets/styles.css">
-    
+
     <link rel="shortcut icon" type="image/png" href="./assets/images/favicon.png">
     <title>US Voter Representatives</title>
 </head>
 
-<body>   
-    
+<body>
+
     <header>
         <nav>
             <div class="nav-wrapper">
-                <img src="./assets/images/favicon.png" alt="logo" id="topFavicon"> 
-                <a class="brand-logo">US Voter Representatives Lookup Tool</a>
+                <img src="./assets/images/favicon.png" alt="logo" id="topFavicon">
+                <a class="brand">US Voter Representatives Lookup Tool</a>
             </div>
         </nav>
 
         <!-- Choose District Search -->
-        <section>
-            <h5>Choose District</h5>
-            <form id="repSearchForm">
-                <select class="browser-default" id="stateSelect">
-                    <option value="" disabled selected>State</option>
-                    <!-- State search options will load here -->
-                </select>
-                <select class="browser-default" id="districtSelect">
-                    <option value="" disabled selected>Number</option>
-                    <!-- District number search options will load here -->
-                </select>
-                <button type="submit" class="btn">Search</button>
-                <h6 id="noDistrict" class="hidden">That district does not exist.<br>Please try lowering the number for that state.</h6>
-                <h6 id="loadingText" class="hidden">LOADING DATA...</h6>
-            </form>
-            <div id="previousSearch">
-                <h6>Previous Search: AL 01</h6>
+        <section class="row" style="margin-bottom: 0">
+            <div class="col s12 md6" style="padding-left: 0;">
+                <h5>Choose District</h5>
+                <form id="repSearchForm">
+                    <select class="browser-default" id="stateSelect">
+                        <option value="" disabled selected>State</option>
+                        <!-- State search options will load here -->
+                    </select>
+                    <select class="browser-default" id="districtSelect">
+                        <option value="" disabled selected>Number</option>
+                        <!-- District number search options will load here -->
+                    </select>
+                    <button type="submit" class="btn">Search</button>
+                    <h6 id="noDistrict" class="hidden">That district does not exist.<br>Please try lowering the number
+                        for that state.</h6>
+                    <h6 id="loadingText" class="hidden">LOADING DATA...</h6>
+                    <div id="previousSearch">
+                        <span>Previous Search: AL 01</span>
+                    </div>
+                </form>
+
             </div>
-        </section>                    
+        </section>
 
         <!-- Find Your District Search -->
-        <section class="sectionDistrict">
-            <h5>Find Your District</h5>
-            <ul >
-                <li>Not sure who your US Representative is?</li>
-                <li>Enter your street address and zip code below to find them.</li>
-            </ul>
-            <form id="usrAddressForm">
-                <div class="row" id="addressSearchBar">
-                    <div class="input-field addr-field">
-                        <input  id="street_address" type="text" class="validate">
-                        <label style="color:white" for="street_address">Street Address</label>
-                    </div>
-                    <div class="input-field addr-field">
-                        <input id="zip" type="text" class="validate">
-                        <label style="color:white" for="zip">Zip Code</label>
-                    </div>
-                    <input class="btn" type="submit" value="Find My District">
-                    <span id="districtOutput" style="font-size: 48px; font-weight:bold"></span>
+        <section class="sectionDistrict row" style="margin-bottom: 0">
+            <div class="col s12 l6 m12" style="padding-left: 0;">
+                <h5>Find Your District</h5>
+                <ul>
+                    <li>Not sure who your US Representative is?</li>
+                    <li>Enter your street address and zip code below to find them.</li>
+                </ul>
+                <div class="row">
+                    <form class="col s12 " id="usrAddressForm">
+                        <div class="row" id="addressSearchBar">
+                            <div class="col input-field addr-field s12 m4">
+                                <input id="street_address" type="text" class="validate">
+                                <label style="color:white" for="street_address">Street Address</label>
+                            </div>
+                            <div class="col input-field addr-field s12 m4">
+                                <input id="zip" type="text" class="validate">
+                                <label style="color:white" for="zip">Zip Code</label>
+                            </div>
+                            <div class="col s12 m4">
+                                <input class="btn" type="submit" value="Find My District">
+                                <span id="districtOutput" style="font-size: 48px; font-weight:bold"></span>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </form>        
+            </div>
         </section>
 
         <!-- Intro Blurb -->
-        <section>
-            <ul class="listOne">
-                <li>Are you interested in voting but unsure where to start?</li>
-                <li>Feeling overwhelmed or pressured?</li>
-            </ul>
-            <ul class="listTwo">
-                <li>Well, we're here to help.</li>
-                <li>Use the search above to review candidate information.</li>
-            </ul>
+        <section class="row">
+            <div class="col s12 md6" style="padding-left: 0;">
+                <ul class="listOne">
+                    <li>Are you interested in voting but unsure where to start?</li>
+                    <li>Feeling overwhelmed or pressured?</li>
+                </ul>
+                <ul class="listTwo">
+                    <li>Well, we're here to help.</li>
+                    <li>Use the search above to review candidate information.</li>
+                </ul>
+            </div>
         </section>
     </header>
 
@@ -86,38 +99,47 @@
         <div class="row">
 
             <!-- Info Card -->
-            <div class="card col s4" id="info-card" class="collapsible">
-                <div class="card-content">
-                    <img src="./assets/images/education_icon_142625.png" alt="info" width="100" height="100">
-                    <p>Information Card</p>
-                </div>
-                <div class="table">
-                    <div class="info-photo" id="repPhoto">
-                        <!-- Photo appended here -->
+            <div class="col s12 m4" id="info-card" class="collapsible">
+                <div class="card">
+                    <div class="card-content">
+                        <img src="./assets/images/education_icon_142625.png" alt="info" width="100" height="100">
+                        <p>Information Card</p>
                     </div>
-                    <div class="expend-table" id=infoCardDataContainer class="collapsible">
-                        <!-- Info appended here -->
+                    <div class="table">
+                        <div class="info-photo" id="repPhoto">
+                            <!-- Photo appended here -->
+                        </div>
+                        <div class="expend-table" id=infoCardDataContainer class="collapsible">
+                            <!-- Info appended here -->
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Finance Card -->
-            <div class="card col s4" id="finance-card">
-                <div class="card-content">
-                    <img src="./assets/images/flatten_the_curve_icon_142602.png" alt="info" width="100" height="100">
-                    <p>Finance Card</p>
+            <div class="col s12 m4" id="finance-card">
+                <div class="card">
+                    <div class="card-content">
+                        <img src="./assets/images/flatten_the_curve_icon_142602.png" alt="info" width="100"
+                            height="100">
+                        <p>Finance Card</p>
+                    </div>
+                    <div class="expend-table" id="financeDataContainer">
+                        <!-- Finance data appended here -->
+                    </div>
                 </div>
-                <div class="expend-table" id="financeDataContainer">
-                    <!-- Finance data appended here -->
-                </div>
+
             </div>
-            
+
             <!-- Supporters Card -->
-            <div class="card col s4" id="supporters-card">
-                <div class="card-content">
-                    <img src="./assets/images/thumbs_up_icon_142634.png" alt="info" width="100" height="100">
-                    <p>Supporters Card</p>
+            <div class="col s12 m4" id="supporters-card">
+                <div class="card">
+                    <div class="card-content">
+                        <img src="./assets/images/thumbs_up_icon_142634.png" alt="info" width="100" height="100">
+                        <p>Supporters Card</p>
+                    </div>
                 </div>
+
                 <!-- Supporters data appended here -->
             </div>
         </div>
@@ -125,48 +147,53 @@
         <div class="row">
 
             <!-- Vote History Card -->
-            <div class="card col s6" id="vote-history-card">
-                <div class="card-content">
-                    <img src="./assets/images/dialogue_icon_142637.png" alt="info" width="100" height="100">
-                    <p>Vote History Card</p> 
+            <div class="col s12 m6" id="vote-history-card">
+                <div class="card">
+                    <div class="card-content">
+                        <img src="./assets/images/dialogue_icon_142637.png" alt="info" width="100" height="100">
+                        <p>Vote History Card</p>
+                    </div>
+                    <div class="cardWrapper">
+                        <div>
+                            <ul id="vote-history-content" class="collapsible" data-collapsible="accordion">
+                                <!-- Vote History appended here -->
+                            </ul>
+                        </div>
+                        <div>
+                            <ul id="missed-votes-content" class="collapsible" data-collapsible="accordion">
+                                <!-- Missed Votes appended here -->
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="cardWrapper" > 
-                    <div>
-                        <ul id="vote-history-content" class="collapsible" data-collapsible="accordion">
-                            <!-- Vote History appended here -->
-                        </ul>
-                    </div>
-                    <div>
-                        <ul id="missed-votes-content" class="collapsible" data-collapsible="accordion">
-                            <!-- Missed Votes appended here -->
-                        </ul>
-                    </div>
-                </div> 
             </div>
 
             <!-- Travel Card -->
-            <div class="card col s6"> 
-                <div class="card-content">
-                    <img src="./assets/images/travel_icon_142598.png" alt="info" width="100" height="100">
-                    <p>Travel Card</p>
+            <div class="col s12 m6">
+                <div class="card">
+                    <div class="card-content">
+                        <img src="./assets/images/travel_icon_142598.png" alt="info" width="100" height="100">
+                        <p>Travel Card</p>
+                    </div>
+                    <div id="travel-card">
+                        <!-- Trip data appended here -->
+                    </div>
                 </div>
-                <div id="travel-card">
-                    <!-- Trip data appended here -->
-                </div>
-            </div> 
+            </div>
         </div>
     </main>
 
     <footer class="page-footer">
         <div class="footer-copyright">
-            <div class="container">
+            <div style="padding-left: 20px;">
             © 2021 Copyright Text
             </div>
         </div>
     </footer>
-    
+
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- Materialize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- State Data js -->
@@ -188,4 +215,5 @@
     <!-- Find My Rep js -->
     <script src="./assets/findmyrep.js"></script>
 </body>
+
 </html>
