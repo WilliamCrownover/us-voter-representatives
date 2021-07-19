@@ -1,5 +1,5 @@
 // GLOBAL VARIABLES
-var API_KEY = "AIzaSyDWoNvuofpIPra70zQ42CMuJJJMCx1NzKc";
+var API_KEY = "AIzaSyDWmx5SNWTY95Rn78Kce0f2dhi4ZZkrdxY";
 var zipCode = "";
 var gapiCivicsURL = "";
 var keysArr = [];

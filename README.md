@@ -1,6 +1,6 @@
 # US Representatives
 
-[US Voter Representatives Landing Page](https://maryvpie.github.io/us-voter-representatives/) - deployed version
+[US Voter Representatives Landing Page](https://williamcrownover.github.io/us-voter-representatives/) - deployed version
 
 ## About
 
