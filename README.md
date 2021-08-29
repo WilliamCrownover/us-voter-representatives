@@ -1,21 +1,37 @@
 # US Representatives
 
-[US Voter Representatives Landing Page](https://williamcrownover.github.io/us-voter-representatives/) - deployed version
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## About
+## Description
 
- This app helps US voters to be informed about their representatives. By using publicly available civic APIs we created a tool to bring hidden information to curious voters in a non-biased, comprehensible way.
+This front-end web application aims to help United State voters easily find out information about their house representatives in congress. By using publicly available civic APIs we created a tool to bring hidden information to curious voters in a non-biased, comprehensible way. The two API’s used are [OpenFEC](https://api.open.fec.gov/developers/) and [ProPublica Congress](https://projects.propublica.org/api-docs/congress-api/). The app also includes a search tool to find your district number using your address input into [Google Civics API](https://developers.google.com/civic-information). The information of a specific congressional representative is displayed as cards: Information, Finance, Supporters, Vote History, and Travel.
 
+## Table of Contents
 
-## Screenshots and mockups of the page
+- [User Story](#user-story)
+- [Live Site](#live-site)
+- [Code File Structure](#code-file-structure)
+- [Technologies](#technologies)
+- [Future Development](#future-development)
+- [License](#license)
+- [Contributing](#contributing)
+- [Contact](#contact)
+- [Credits](#credits)
 
-|![A user clicks to find info.](./assets/images/representat.gif)| <img src="assets/images/mock_up_500w.png" width="250" height="450" alt="Mockup"/> |
-| --- | --- |
-|  Work done | Mockup |
+## User Story
+```
+AS A curious US voter
+I WANT to know more about my congressional representatives
+SO THAT I can plan accordingly to support them
+```
 
----
+## Live Site
 
-## What's included
+https://williamcrownover.github.io/us-voter-representatives/
+
+![A user clicks to find info.](./assets/images/representat.gif)
+
+## Code File Structure
 
 - index.html:
     - optimized for the accessibility needs
@@ -43,59 +59,39 @@
   - loads data on Information Card
 
 - finance.js
-  - loads data on Information Card
+  - loads data on Finance Card
 
 - supporters.js
-  - loads data on Information Card
+  - loads data on Supporters Card
 
 - travel.js
-  - loads data on Information Card
+  - loads data on Travel Card
 
 - votehistory.js
-  - loads data on Information Card
+  - loads data on Vote History Card
 
-- Technologies/Frameworks/Resources Used (see dependencies section below):
-  - JQuery
-  - server-side APIs
-  - materializecss
-  - google fonts
-  
+## Technologies
+- Materialize.css
+- jQuery
+- 3rd-party APIs
+  - OpenFEC
+  - ProPublica Congress
+  - Google Civics API
 
-## Dependencies 
-**Materialize:** 
-Project webpage: https://materializecss.com/ 
-To include in project file:
-```
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+## Future Development
+I will be revisiting this project in the future to expand upon the interactivity of the website and refine the overall graphic design/layout. There are also opportunities to convert this project to a MVC file structure and implement some back-end features or databases.
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-```
+## License
+Licensed under the MIT License - https://opensource.org/licenses/MIT
 
-**jQuery:** 
-Project webpage: https://jquery.com/  
-To include in project file:  
-```
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-```
+## Contributing
+You are welcome to fork this repo or make contributions to the project in collaboration with me.
 
+## Contact
 
-## How can I contribute or help?
-- Star our GitHub repo :star:
-- Create pull requests, submit bugs, suggest new features or documentation updates :wrench:
+If you have any questions you can email me at williamcrownover1@gmail.com.
 
+You can also check out my other work on GitHub at [WilliamCrownover](https://github.com/WilliamCrownover)
 
-## How to download the sources and contribute on the code
-1. use ```git clone ``` to clone repo sources
-2. create a branch with the ```git checkout -b <your_branch_name>```
-3. push your branch with ```git push -u origin <your_branch_name>``` 
-4. create a pull request for our review
-
-## From developers
-Made by [:milky_way:Sheri](https://github.com/grudgecat), [Kenny](https://github.com/knyngun), [Sam](https://github.com/syadII), [:camera:William](https://github.com/WilliamCrownover) and [:crab:Mariia](https://github.com/MaryVPie).
-We're always happy to receive your feedback!
-
-## More from us
-To be updated with new projects.
-
+## Credits
+This was originally a collaborative project developed by [Sheri](https://github.com/grudgecat), [Mariia](https://github.com/MaryVPie), [Sam](https://github.com/syadII), [Kenny](https://github.com/knyngun), and me, [William](https://github.com/WilliamCrownover).
