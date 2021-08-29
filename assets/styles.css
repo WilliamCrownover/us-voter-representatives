@@ -1,235 +1,233 @@
-*{
-    font-family:serif;
+* {
+  font-family: serif;
 }
 
 nav {
-    background-color:  #223E88!important;
-    margin-bottom: 10px;
+  background-color: #223e88 !important;
+  margin-bottom: 10px;
 }
 
-
-
-footer{
-    background-color:  #223E88!important;
+footer {
+  background-color: #223e88 !important;
 }
 
-body{
-    background-color: lightgrey;;
+body {
+  background-color: lightgrey;
 }
 
-nav img{
-    float: left;
-    max-width: 40px;
+nav img {
+  float: left;
+  max-width: 40px;
 }
-
 
 @media only screen and (min-width: 601px) {
-    .brand {
-        font-size: 2.1rem;
-         padding: 0
-    }
+  .brand {
+    font-size: 2.1rem;
+    padding: 0;
+  }
 }
 
 @media only screen and (min-width: 767px) {
-
-    .card {
-        min-height: 600px;
-    }
+  .card {
+    min-height: 600px;
+  }
 }
 
 @media only screen and (min-width: 1020px) {
-
-    .card {
-        min-height: 630px;
-    }
+  .card {
+    min-height: 630px;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
-
-    .card {
-        min-height: 750px;
-    }
+  .card {
+    min-height: 750px;
+  }
 }
 
 @media only screen and (min-width: 1590px) {
-
-    .card {
-        min-height: 800px;
-    }
+  .card {
+    min-height: 800px;
+  }
 }
 
-section{
-    background-color:  #0168AD;
-    width: 100%;
-    padding: 10px 40px;
+section {
+  background-color: #0168ad;
+  width: 100%;
+  padding: 10px 40px;
 }
 
 .sectionDistrict {
-    background-color:  #0168AD;
-    width: 100%;
-    padding: 10px 40px;
+  background-color: #0168ad;
+  width: 100%;
+  padding: 10px 40px;
 }
 
-.listOne{
-    float: left;
+.listOne {
+  float: left;
 }
 
-.listTwo{
-    float:right;
+.listTwo {
+  float: right;
 }
 
-section li{
-    font-size: large;
-    margin: 0px;
-    color: #fff;
+section li {
+  font-size: large;
+  margin: 0;
+  color: #fff;
 }
 
-.card-content img{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+.card-content img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
-
 
 #addressSearchBar {
-    justify-content: start;
+  justify-content: start;
 }
 
 #addressSearchBar div {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 #usrAddressForm input {
-    max-width: 250px;
-    color: #fff;
+  max-width: 250px;
+  color: #fff;
 }
 
-.card-content p{
-    text-align: center;
-    padding: 20px 20px;   
-    font-size: 30px;
-    color: #fff;
-    background-color: red;
-    font-family: serif;
+.card-content p {
+  text-align: center;
+  padding: 20px 20px;
+  font-size: 30px;
+  color: #fff;
+  background-color: red;
+  font-family: serif;
 }
 
-.finance-ratio, .info-photo{
-    padding: 0px;
+.finance-ratio,
+.info-photo {
+  padding: 0;
 }
 
-.expend-table output, .finance-table output{
-    border: solid black 1px;
-    padding: 15px;
-    display: block;
-    margin: 1px;
+.expend-table output,
+.finance-table output {
+  border: solid black 1px;
+  padding: 15px;
+  display: block;
+  margin: 1px;
 }
 
-.travel-info, .vote-info{
-    border: solid black 1px;
-    padding: 10px;
-    margin:5px 5px; 
+.travel-info,
+.vote-info {
+  border: solid black 1px;
+  padding: 10px;
+  margin: 5px 5px;
 }
 
-.destination-out, .sponsor-out,.category-out, .text-out {
-    border: solid black 1px;
-    padding:10px;
+.destination-out,
+.sponsor-out,
+.category-out,
+.text-out {
+  border: solid black 1px;
+  padding: 10px;
 }
 
 .cardWrapper {
-    padding: 5px;
-    margin-left: 5px;
+  padding: 5px;
+  margin-left: 5px;
 }
 
 .browser-default {
-    width: 20%;
+  width: 20%;
 }
 
 #districtSelect {
-    width: 90px
+  width: 90px;
 }
 
 select.browser-default {
-    display: inline-block;
-    margin-right: 10px;
-    width: 140px;
+  display: inline-block;
+  margin-right: 10px;
+  width: 140px;
 }
 
 h5 {
-    color: white;
+  color: white;
 }
 
 #topFavicon {
-    margin: 15px;
-    margin-top: 12px;
+  margin: 15px;
+  margin-top: 12px;
 }
 
 #repSearchForm {
-    position: relative;
+  position: relative;
 }
 
 .btn {
-    height: 45px;
-    margin-bottom: 5px;
-    background-color: #223E88;
+  height: 45px;
+  margin-bottom: 5px;
+  background-color: #223e88;
 }
 
 .btn:hover {
-    background-color: #40b5e0;
+  background-color: #40b5e0;
 }
 
 input.btn {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 h6 {
-    box-sizing: border-box;
-    color: white;
-    display: inline-block;
-    margin: 0;
-    margin-left: 15px;
-    margin-top: 2px;
+  box-sizing: border-box;
+  color: white;
+  display: inline-block;
+  margin: 0;
+  margin-left: 15px;
+  margin-top: 2px;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 #districtOutput {
-    margin-left: 20px;
-    margin-top: 2px;
-    font-size: 36px;
+  margin-left: 20px;
+  margin-top: 2px;
+  font-size: 36px;
 }
 
 .header-wrapper {
-    background-color: #0168AD;
+  background-color: #0168ad;
 }
 
 #usrAddressForm div {
-    background-color: #0168AD;
+  background-color: #0168ad;
 }
 
 #previousSearch h6 {
-    margin: 10px 0;
-    margin-bottom: 20px;
+  margin: 10px 0;
+  margin-bottom: 20px;
 }
 
 #repPhoto {
-    display: flex;
+  display: flex;
 }
 
 #repPhoto img {
-    width: 70%;
-    margin: 0 auto;
-    max-width: 350px;
-    max-height: 450px;
+  width: 70%;
+  margin: 0 auto;
+  max-width: 350px;
+  max-height: 450px;
 }
 
 .collapseLook {
-    display: flex;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    line-height: 1.5;
-    padding: 1rem;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
+  display: flex;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  padding: 1rem;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
 }
