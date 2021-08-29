@@ -2,3 +2,8 @@
 todo.*
 # exclude local folder to being pushed to the repo
 local/
+node_modules
+package-lock.json
+package.json
+.eslintrc.json
+.stylelintrc.json

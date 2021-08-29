@@ -1,29 +1,30 @@
-//Global variables
-var voteTitle = "";
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+// Global variables
+var voteTitle = '';
 
-//Clear section & add header for Vote History section
+// Clear section & add header for Vote History section
 function appendVotesData() {
-    $("#vote-history-content").empty();
+	$( '#vote-history-content' ).empty();
 
-    $("#vote-history-content").append(`
+	$( '#vote-history-content' ).append( `
         <li>
             <div class="collapsible-header"><span style="font-weight:bold; color:#223E88"><h4>CANDIDATE VOTE HISTORY</h4></span></div>
         </li>
-    `);
+    ` );
 
-    //write candidate Vote History to page
-    for(i = 0; i < Candidate.voteHistoryCard.votes.length; i++) {
-        //address data entries without title
-        if(Candidate.voteHistoryCard.votes[i].title == "") {
-        voteTitle = "Vote action has data, but no title.";
-        }
-        else {
-        //Generate static title section first
-        var voteTitle = Candidate.voteHistoryCard.votes[i].title;
-        }
+	// write candidate Vote History to page
+	for( var i = 0; i < Candidate.voteHistoryCard.votes.length; i++ ) {
+		// address data entries without title
+		if( Candidate.voteHistoryCard.votes[i].title === '' ) {
+			voteTitle = 'Vote action has data, but no title.';
+		} else {
+			// Generate static title section first
+			var voteTitle = Candidate.voteHistoryCard.votes[i].title;
+		}
 
-        //write remaining data to accordion section, expands on title click
-        $("#vote-history-content").append(`
+		// write remaining data to accordion section, expands on title click
+		$( '#vote-history-content' ).append( `
             <li>
                 <div class="collapsible-header" style="font-weight:bold"><span style="font-weight:bold">Title:\u00A0${voteTitle}</span></div>
                 <div class="collapsible-body"> 
@@ -41,33 +42,32 @@ function appendVotesData() {
                         <span style="font-weight:bold">Total Non Votes: </span>${Candidate.voteHistoryCard.votes[i].totalNotVoting}</p>
                 </div>
             </li>
-        `);
-    }
+        ` );
+	}
 }
 
-//Clear section & add header for Missed Votes section
+// Clear section & add header for Missed Votes section
 function appendExplanationsData() {
-    $("#missed-votes-content").empty();
-    $("#missed-votes-content").append(`
+	$( '#missed-votes-content' ).empty();
+	$( '#missed-votes-content' ).append( `
         <li>
             <div class="collapsible-header"><span style="font-weight:bold; color:#223E88"><h4>CANDIDATE MISSED VOTES</h4></span></div>
         </li>
-    `);
-    
-    //If no missed votes data exists, write message to user
-    if(!Candidate.voteHistoryCard.explanations.length) {
-        $("#missed-votes-content").append(`
+    ` );
+
+	// If no missed votes data exists, write message to user
+	if( !Candidate.voteHistoryCard.explanations.length ) {
+		$( '#missed-votes-content' ).append( `
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
                     <div class="collapsible-header" style="font-weight:bold"><span style="font-weight:bold">No missed votes recorded for candidate.</span></div>
                 </li>
             </ul>
-        `)
-    }
-    else {
-        //otherwise write Missed Votes data to screen by date
-        for(i = 0; i < Candidate.voteHistoryCard.explanations.length; i++) {
-            $("#missed-votes-content").append(`
+        ` );
+	} else {
+		// otherwise write Missed Votes data to screen by date
+		for( var i = 0; i < Candidate.voteHistoryCard.explanations.length; i++ ) {
+			$( '#missed-votes-content' ).append( `
                 <ul class="collapsible" data-collapsible="accordion">
                     <li>
                         <div class="collapsible-header" style="font-weight:bold"><span style="font-weight:bold">Date of missed vote:\u00A0${Candidate.voteHistoryCard.explanations[i].date}</span></div>
@@ -77,16 +77,16 @@ function appendExplanationsData() {
                         </div>
                     </li>
                 </ul>
-            `)
-        }
-    }
+            ` );
+		}
+	}
 }
 
-//call functions to write vote history & missed votes sections to page. Add collapsible method after data is written to page.
+// call functions to write vote history & missed votes sections to page. Add collapsible method after data is written to page.
 function writeVoterInfoCard() {
-    appendVotesData(); 
-    appendExplanationsData(); 
+	appendVotesData();
+	appendExplanationsData();
 
-    $("#vote-history-content").find(".collapsible").collapsible();
-    $("#missed-votes-content").find(".collapsible").collapsible();
+	$( '#vote-history-content' ).find( '.collapsible' ).collapsible();
+	$( '#missed-votes-content' ).find( '.collapsible' ).collapsible();
 }

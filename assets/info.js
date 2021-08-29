@@ -1,21 +1,23 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 // Elements
-var infoCardDataId= $("#infoCardDataContainer");
-var repPhotoEL = $("#repPhoto");
+var infoCardDataId= $( '#infoCardDataContainer' );
+var repPhotoEL = $( '#repPhoto' );
 
 // Functions
-function displayInfoCard() {  
-    infoCardDataId.empty();
-    repPhotoEL.empty();
+function displayInfoCard() {
+	infoCardDataId.empty();
+	repPhotoEL.empty();
 
-    repPhotoEL.append(`
+	repPhotoEL.append( `
         <img src="${Candidate.photo()}" onerror="this.style.display='none'">
-    `)
+    ` );
 
-    infoCardDataId.append(`
+	infoCardDataId.append( `
         <p style="margin-left: 15%"><span style="font-weight:bold">Name:&#160</span>${Candidate.infoCard.fullName()}</p>
         <p style="margin-left: 15%"><span style="font-weight:bold">Seat:&#160</span>${Candidate.infoCard.seat()}</p>
         <p style="margin-left: 15%"><span style="font-weight:bold">Party:&#160</span>${Candidate.infoCard.party()}</p>
-    `)
+    ` );
 
-    $("#infoCardDataContainer > .collapsible").collapsible();  
+	$( '#infoCardDataContainer > .collapsible' ).collapsible();
 }

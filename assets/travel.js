@@ -1,18 +1,20 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 
-// fills card with the data about trips 
-function fillTravelCard(trips) {
-    // Jquery container for the trip card
-    var tripCard$ = $('#travel-card');
+// fills card with the data about trips
+function fillTravelCard( trips ) {
+	// Jquery container for the trip card
+	var tripCard$ = $( '#travel-card' );
 
-    //empties the parent object for clean slate to load data
-    tripCard$.empty();
+	// empties the parent object for clean slate to load data
+	tripCard$.empty();
 
-    //Looping through trips
-    for (let idx = 0; idx < trips.length; idx++) {
-        //taking a trip object on index idx in array trips
-        const tripData = trips[idx];
-        //uses string interpolation to create a template
-        let template = `
+	// Looping through trips
+	for ( let idx = 0; idx < trips.length; idx++ ) {
+		// taking a trip object on index idx in array trips
+		const tripData = trips[idx];
+		// uses string interpolation to create a template
+		let template = `
         <ul class="collapsible" data-collapsible="accordion">
             <li>
                 <div class="collapsible-header" style="font-weight:bold"><span style="font-weight:bold">Flight On ${tripData.departure} to ${tripData.destination} </span></div>
@@ -24,10 +26,10 @@ function fillTravelCard(trips) {
             </li>
         </ul>`;
 
-        //appends resulting html (replacedTemplate) to trip card 
-        tripCard$.append(template);
-    }
+		// appends resulting html (replacedTemplate) to trip card
+		tripCard$.append( template );
+	}
 
-    //Initialization collapsible element for travel card
-    $("#travel-card > .collapsible").collapsible();
+	// Initialization collapsible element for travel card
+	$( '#travel-card > .collapsible' ).collapsible();
 }
